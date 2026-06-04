@@ -2,24 +2,32 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Rocket, Award } from 'lucide-react';
 
-export default function Achievements() {
-  const achievements = [
+export default function Achievements({ content }) {
+  const defaultAchievements = [
     {
       title: 'Enterprise Upskilling',
       desc: 'Elevated the Azure data capabilities of global engineering squads through DP-600, DP-203, and DP-900 training.',
-      icon: Trophy,
     },
     {
       title: 'Fabric Adoption',
       desc: 'Spearheaded the internal “Fabric Readiness” program, accelerating the transition to Lakehouse architectures.',
-      icon: Rocket,
     },
     {
       title: 'Certification Enablement',
       desc: 'Mentored teams through Microsoft curricula, driving high certification success rates for Azure Data and Power BI.',
-      icon: Award,
     },
   ];
+
+  const icons = [Trophy, Rocket, Award];
+
+  const achievements = defaultAchievements.map((ach, idx) => {
+    const apiData = content?.[idx];
+    return {
+      title: apiData?.title || ach.title,
+      desc: apiData?.desc || ach.desc,
+      icon: icons[idx] || Award
+    };
+  });
 
   return (
     <section className="py-20 relative">

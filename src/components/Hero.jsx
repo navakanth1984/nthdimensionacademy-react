@@ -2,7 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-export default function Hero() {
+export default function Hero({ content }) {
+  const headline = content?.title || "Get Set Certified";
+  const subtitle = content?.subtitle || "Microsoft Fabric & Azure mastery, led by MCT Navakanth Reddy Dumpa.\nStep through the data multiverse.";
+
   return (
     <header className="relative min-h-screen flex flex-col items-center justify-center text-center pt-24 pb-16 overflow-hidden">
       {/* Background Videos */}
@@ -53,7 +56,7 @@ export default function Hero() {
           className="text-5xl md:text-7xl font-black tracking-tight mb-4"
         >
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-purple-500 to-pink-500">
-            Get Set Certified
+            {headline}
           </span>
         </motion.h1>
 
@@ -61,11 +64,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="max-w-[650px] text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-10"
+          className="max-w-[650px] text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-10 whitespace-pre-line"
         >
-          Microsoft Fabric & Azure mastery, led by MCT Navakanth Reddy Dumpa.
-          <br />
-          Step through the data multiverse.
+          {subtitle}
         </motion.p>
 
         <motion.div 

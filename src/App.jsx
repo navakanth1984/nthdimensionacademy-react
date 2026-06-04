@@ -12,6 +12,7 @@ import FabricDemo from './components/FabricDemo';
 import Footer from './components/Footer';
 import SyllabusModal from './components/SyllabusModal';
 import AIAssistant from './components/AIAssistant';
+import CMSDashboard from './components/CMSDashboard';
 
 function App() {
   const glowRef = useRef(null);
@@ -30,6 +31,45 @@ function App() {
   // Syllabus Modal states
   const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
   const [syllabusCourseId, setSyllabusCourseId] = useState('dp700');
+
+  // CMS Dashboard states
+  const [isCMSOpen, setIsCMSOpen] = useState(false);
+  const [contentData, setContentData] = useState(null);
+
+  // Fetch website conformed content from MongoDB Atlas API on mount
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('/api/content');
+        if (response.ok) {
+          const data = await response.json();
+          setContentData(data);
+        }
+      } catch (err) {
+        console.warn('DB content load failed, falling back to static components text:', err);
+      }
+    };
+    fetchContent();
+  }, []);
+
+  // Sync edits back to MongoDB
+  const handleSaveContent = async (password, updatedData) => {
+    try {
+      const response = await fetch('/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, data: updatedData })
+      });
+      if (response.ok) {
+        setContentData(updatedData);
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error('Failed to sync content to MongoDB:', err);
+      return false;
+    }
+  };
 
   // Custom Cursor Glow effect
   useEffect(() => {
@@ -100,19 +140,19 @@ function App() {
       {/* Navbar Header */}
       <Navbar />
 
-      {/* Page Sections */}
-      <Hero />
-      <About />
+      {/* Page Sections (Bind MongoDB text states if loaded) */}
+      <Hero content={contentData?.hero} />
+      <About content={contentData?.about} />
       <Expertise />
       <CurriculumMap />
       <Training onOpenSyllabus={handleOpenSyllabus} />
       <AsymmetricSection />
-      <Experience />
-      <Achievements />
+      <Experience content={contentData?.experience} />
+      <Achievements content={contentData?.achievements} />
       <FabricDemo onPlayDemo={handlePlayDemo} />
 
       {/* Footer Details */}
-      <Footer />
+      <Footer onOpenAdmin={() => setIsCMSOpen(true)} />
 
       {/* Syllabus Tabbed Modal overlay */}
       <SyllabusModal 
@@ -131,6 +171,16 @@ function App() {
         triggerQuery={triggerQuery}
         setTriggerQuery={setTriggerQuery}
       />
+
+      {/* Hidden Slide-in CMS Console Dashboard */}
+      {contentData && (
+        <CMSDashboard 
+          isOpen={isCMSOpen}
+          onClose={() => setIsCMSOpen(false)}
+          contentData={contentData}
+          onSaveContent={handleSaveContent}
+        />
+      )}
 
     </div>
   );

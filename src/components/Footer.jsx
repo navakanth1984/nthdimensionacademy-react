@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail } from 'lucide-react';
+import { Mail, Settings } from 'lucide-react';
 
 const InstagramIcon = (props) => (
   <svg 
@@ -20,7 +20,7 @@ const InstagramIcon = (props) => (
   </svg>
 );
 
-export default function Footer() {
+export default function Footer({ onOpenAdmin }) {
   return (
     <footer id="contact" className="py-16 mt-20 relative bg-black/60 border-t border-[#ffd700]/10 backdrop-blur-md">
       <div className="max-w-[1200px] mx-auto px-8">
@@ -66,6 +66,15 @@ export default function Footer() {
                 <InstagramIcon className="h-4 w-4" />
                 <span>@nthdimensionacademy</span>
               </a>
+              {onOpenAdmin && (
+                <button 
+                  onClick={onOpenAdmin}
+                  className="flex items-center gap-2 md:justify-end text-xs text-gray-500 hover:text-cosmic-gold mt-2 transition-colors cursor-pointer bg-transparent border-none p-0 outline-none w-fit self-end"
+                >
+                  <Settings className="h-3.5 w-3.5" />
+                  <span>Admin Console</span>
+                </button>
+              )}
             </div>
           </div>
 

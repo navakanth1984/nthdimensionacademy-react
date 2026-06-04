@@ -2,7 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone } from 'lucide-react';
 
-export default function About() {
+export default function About({ content }) {
+  const bio1 = content?.summary1 || "Master Consultant and Microsoft Certified Trainer (MCT) with over 14 years of industry experience across global enterprises. Recognized for bridging the gap between complex cloud engineering and scalable technical enablement.";
+  const bio2 = content?.summary2 || "A specialist in the Azure Data Ecosystem, delivering high-impact training programs for global audiences while concurrently serving as a Lead Data Architect. Proven expertise in designing Medallion architectures using Microsoft Fabric and Azure Databricks, empowering teams through structured, certification-aligned curricula and real-world project mentoring.";
+
   return (
     <section id="about" className="py-20 relative">
       <div className="max-w-[1200px] mx-auto px-8">
@@ -37,12 +40,8 @@ export default function About() {
                 <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
                   Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-hyper-drive-blue to-cosmic-gold">Summary</span>
                 </h2>
-                <p className="text-gray-300 font-light leading-relaxed">
-                  Master Consultant and Microsoft Certified Trainer (MCT) with over <strong>14 years of industry experience</strong> across global enterprises. Recognized for bridging the gap between complex cloud engineering and scalable technical enablement.
-                </p>
-                <p className="text-gray-300 font-light leading-relaxed">
-                  A specialist in the Azure Data Ecosystem, delivering high-impact training programs for global audiences while concurrently serving as a Lead Data Architect. Proven expertise in designing Medallion architectures using Microsoft Fabric and Azure Databricks, empowering teams through structured, certification-aligned curricula and real-world project mentoring.
-                </p>
+                <p className="text-gray-300 font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: bio1 }} />
+                <p className="text-gray-300 font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: bio2 }} />
               </div>
 
               {/* Contact Info */}

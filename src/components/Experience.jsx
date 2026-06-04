@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function Experience() {
-  const experiences = [
+export default function Experience({ content }) {
+  const defaultExperiences = [
     {
       role: 'MCT Lead & Lead Consultant',
       company: 'Genpact India Pvt Ltd',
@@ -40,6 +40,8 @@ export default function Experience() {
       desc: 'Operations & Metrics Coordinator: engineered reporting templates and data-driven client tracking models for customer service desks.',
     },
   ];
+
+  const experiences = content && content.length > 0 ? content : defaultExperiences;
 
   return (
     <section id="experience" className="py-20 relative bg-black/10">
