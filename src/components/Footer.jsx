@@ -58,6 +58,13 @@ export default function Footer({ onOpenAdmin }) {
                 <span>mct@nthdimensionacademy.com</span>
               </a>
               <a 
+                href="tel:+919885757677" 
+                className="flex items-center gap-2 md:justify-end hover:text-hyper-drive-blue transition-colors duration-300"
+              >
+                <Phone className="h-4 w-4" />
+                <span>+91 9885757677</span>
+              </a>
+              <a 
                 href="https://instagram.com/nthdimensionacademy" 
                 target="_blank" 
                 rel="noopener noreferrer"

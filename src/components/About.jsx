@@ -26,7 +26,7 @@ export default function About({ content }) {
                 className="relative rounded-2xl overflow-hidden border border-cosmic-gold/20 shadow-2xl max-w-[350px] w-full"
               >
                 <img 
-                  src="/assets/media__1777541920144.jpg" 
+                  src="/assets/media__1777542950074.jpg" 
                   alt="Navakanth Reddy Dumpa - MCT" 
                   className="w-full h-auto object-cover aspect-[4/5]"
                 />
@@ -52,13 +52,15 @@ export default function About({ content }) {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-hyper-drive-blue" />
-                  <a href="mailto:navkanthr@gmail.com" className="hover:text-hyper-drive-blue transition-colors">
-                    navkanthr@gmail.com
+                  <a href="mailto:mct@nthdimensionacademy.com" className="hover:text-hyper-drive-blue transition-colors">
+                    mct@nthdimensionacademy.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-hyper-drive-blue" />
-                  <span>+91 9885757677</span>
+                  <a href="tel:+919885757677" className="hover:text-hyper-drive-blue transition-colors">
+                    +91 9885757677
+                  </a>
                 </div>
               </div>
 
