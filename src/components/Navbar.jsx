@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Navbar() {
+export default function Navbar({ onOpenPortal }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -53,6 +53,14 @@ export default function Navbar() {
             <a href="#contact" className="text-[#f8fafc] hover:text-hyper-drive-blue text-sm font-medium uppercase tracking-wider transition-colors duration-300">
               Contact
             </a>
+          </li>
+          <li>
+            <button 
+              onClick={onOpenPortal}
+              className="px-4 py-1.5 rounded-full border border-cosmic-gold bg-cosmic-gold/5 text-cosmic-gold hover:bg-cosmic-gold hover:text-black text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-[0_0_10px_rgba(255,215,0,0.15)] hover:scale-105"
+            >
+              Student Portal
+            </button>
           </li>
         </ul>
       </div>

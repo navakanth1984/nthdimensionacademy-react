@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import SyllabusModal from './components/SyllabusModal';
 import AIAssistant from './components/AIAssistant';
 import CMSDashboard from './components/CMSDashboard';
+import StudentDashboard from './components/StudentDashboard';
 
 function App() {
   const glowRef = useRef(null);
@@ -35,6 +36,9 @@ function App() {
   // CMS Dashboard states
   const [isCMSOpen, setIsCMSOpen] = useState(false);
   const [contentData, setContentData] = useState(null);
+
+  // Student Portal states
+  const [isStudentPortalOpen, setIsStudentPortalOpen] = useState(false);
 
   // Fetch website conformed content from MongoDB Atlas API on mount
   useEffect(() => {
@@ -138,7 +142,7 @@ function App() {
       <div className="cursor-glow hidden md:block" ref={glowRef} />
 
       {/* Navbar Header */}
-      <Navbar />
+      <Navbar onOpenPortal={() => setIsStudentPortalOpen(true)} />
 
       {/* Page Sections (Bind MongoDB text states if loaded) */}
       <Hero content={contentData?.hero} />
@@ -181,6 +185,12 @@ function App() {
           onSaveContent={handleSaveContent}
         />
       )}
+
+      {/* Student Portal Dashboard Overlay */}
+      <StudentDashboard 
+        isOpen={isStudentPortalOpen} 
+        onClose={() => setIsStudentPortalOpen(false)} 
+      />
 
     </div>
   );
