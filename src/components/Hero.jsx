@@ -31,21 +31,32 @@ export default function Hero({ content }) {
       </div>
 
       <div className="relative z-10 max-w-[1000px] px-8 flex flex-col items-center justify-center">
-        {/* Monolith Branded Image Container */}
+        {/* Monolith Branded Image or Spline 3D Embed Container */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="mb-8 w-full max-w-[900px] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,240,255,0.15)] border border-[#ffd700]/10 hover:border-[#00f0ff]/30 transition-colors duration-500"
+          className="mb-8 w-full max-w-[900px] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,240,255,0.15)] border border-[#ffd700]/10 hover:border-[#00f0ff]/30 transition-colors duration-500 bg-black/20"
         >
-          <picture>
-            <source media="(max-width: 768px)" srcSet="/assets/[IMAGE_END]__A_10-row_vertical_grid_202605060728.jpeg" />
-            <img 
-              src="/assets/[IMAGE_END]__A_premium_4D_glass_202605052049.jpeg" 
-              alt="Nth Dimension Academy Monolith" 
-              className="w-full h-auto object-contain max-h-[480px] md:max-h-[600px] transition-transform duration-700 hover:scale-[1.01]"
-            />
-          </picture>
+          {content?.splineEmbedUrl ? (
+            <div className="w-full h-[320px] sm:h-[420px] md:h-[500px] relative">
+              <iframe 
+                src={content.splineEmbedUrl} 
+                className="absolute inset-0 w-full h-full border-0 pointer-events-auto"
+                title="Spline 3D Scene"
+                allow="xr-spatial-tracking"
+              />
+            </div>
+          ) : (
+            <picture>
+              <source media="(max-width: 768px)" srcSet="/assets/[IMAGE_END]__A_10-row_vertical_grid_202605060728.jpeg" />
+              <img 
+                src="/assets/[IMAGE_END]__A_premium_4D_glass_202605052049.jpeg" 
+                alt="Nth Dimension Academy Monolith" 
+                className="w-full h-auto object-contain max-h-[480px] md:max-h-[600px] transition-transform duration-700 hover:scale-[1.01]"
+              />
+            </picture>
+          )}
         </motion.div>
 
         {/* Text and CTAs */}

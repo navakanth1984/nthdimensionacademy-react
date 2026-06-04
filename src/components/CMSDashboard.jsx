@@ -8,7 +8,7 @@ export default function CMSDashboard({ isOpen, onClose, contentData, onSaveConte
   const [isSaving, setIsSaving] = useState(false);
 
   // Local copy of editable content data
-  const [hero, setHero] = useState(contentData?.hero || { title: '', subtitle: '' });
+  const [hero, setHero] = useState(contentData?.hero || { title: '', subtitle: '', splineEmbedUrl: '' });
   const [about, setAbout] = useState(contentData?.about || { summary1: '', summary2: '' });
   const [experience, setExperience] = useState(contentData?.experience || []);
   const [achievements, setAchievements] = useState(contentData?.achievements || []);
@@ -143,6 +143,16 @@ export default function CMSDashboard({ isOpen, onClose, contentData, onSaveConte
                   rows={2}
                   value={hero.subtitle}
                   onChange={(e) => setHero({ ...hero, subtitle: e.target.value })}
+                  className="w-full text-xs bg-black/40 border border-white/10 rounded-lg p-2.5 text-white focus:outline-none focus:border-hyper-drive-blue"
+                />
+              </div>
+              <div>
+                <label className="text-[10px] uppercase text-gray-400 font-bold tracking-wider block mb-1">Spline 3D Embed URL (Optional)</label>
+                <input 
+                  type="text" 
+                  value={hero.splineEmbedUrl || ''}
+                  onChange={(e) => setHero({ ...hero, splineEmbedUrl: e.target.value })}
+                  placeholder="e.g. https://my.spline.design/crystal-..."
                   className="w-full text-xs bg-black/40 border border-white/10 rounded-lg p-2.5 text-white focus:outline-none focus:border-hyper-drive-blue"
                 />
               </div>

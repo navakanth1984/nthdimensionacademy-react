@@ -2,6 +2,7 @@ import React, { useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Html } from '@react-three/drei';
 import * as THREE from 'three';
+import GLBModel from './GLBModel';
 
 const curriculumData = [
   {
@@ -9,24 +10,28 @@ const curriculumData = [
     title: 'Microsoft Fabric Data Engineer',
     status: 'ACTIVE',
     level: 'Elite Master Syllabus',
+    modelUrl: '/assets/models/fabric_cube.glb'
   },
   {
     id: 'DP-600',
     title: 'Implementing Analytics Solutions',
     status: 'ACTIVE',
     level: 'Specialist Syllabus',
+    modelUrl: '/assets/models/analytics_prism.glb'
   },
   {
     id: 'DP-203',
     title: 'Azure Data Engineering',
     status: 'RETIRED',
     level: 'Legacy Core Syllabus',
+    modelUrl: '/assets/models/azure_core.glb'
   },
   {
     id: 'DP-900',
     title: 'Azure Data Fundamentals',
     status: 'COMING SOON',
     level: 'Foundation Syllabus',
+    modelUrl: '/assets/models/azure_sphere.glb'
   }
 ];
 
@@ -141,39 +146,82 @@ function OrbitingNode({ data, mode, index, radius }) {
   });
 
   return (
-    <group ref={nodeRef}>
-      <mesh
-        onPointerOver={(e) => {
-          e.stopPropagation();
-          document.body.style.cursor = 'pointer';
-          setHover(true);
-        }}
-        onPointerOut={(e) => {
-          e.stopPropagation();
-          document.body.style.cursor = 'default';
-          setHover(false);
-        }}
-        onClick={(e) => {
-          e.stopPropagation();
-          if (data.id === 'DP-700') window.open('https://nthdimensionacademy.com/dp700-atlas/', '_blank');
-          if (data.id === 'DP-600') window.open('https://nthdimensionacademy.com/dp600-atlas/', '_blank');
-        }}
-      >
-        <icosahedronGeometry args={[0.55, 1]} />
-        <meshStandardMaterial
-          color={glowColor}
-          wireframe={true}
-          transparent={true}
-          opacity={0.8}
-          emissive={glowColor}
-          emissiveIntensity={hovered ? 3.0 : 1.2}
-        />
-      </mesh>
-
-      <mesh>
-        <sphereGeometry args={[0.25, 16, 16]} />
-        <meshBasicMaterial color={glowColor} transparent opacity={0.6} />
-      </mesh>
+    <group 
+      ref={nodeRef}
+      onPointerOver={(e) => {
+        e.stopPropagation();
+        document.body.style.cursor = 'pointer';
+        setHover(true);
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation();
+        document.body.style.cursor = 'default';
+        setHover(false);
+      }}
+      onClick={(e) => {
+        e.stopPropagation();
+        if (data.id === 'DP-700') window.open('https://nthdimensionacademy.com/dp700-atlas/', '_blank');
+        if (data.id === 'DP-600') window.open('https://nthdimensionacademy.com/dp600-atlas/', '_blank');
+      }}
+    >
+      {data.modelUrl ? (
+        <group>
+          {/* Custom GLB Model wrapped with loading fallback inside its error boundary */}
+          <GLBModel 
+            url={data.modelUrl} 
+            scale={0.9} 
+            fallbackSize={0.55} 
+            fallbackColor={glowColor}
+            fallbackMesh={
+              <group>
+                <mesh>
+                  <icosahedronGeometry args={[0.55, 1]} />
+                  <meshStandardMaterial
+                    color={glowColor}
+                    wireframe={true}
+                    transparent={true}
+                    opacity={0.8}
+                    emissive={glowColor}
+                    emissiveIntensity={hovered ? 3.0 : 1.2}
+                  />
+                </mesh>
+                <mesh>
+                  <sphereGeometry args={[0.25, 16, 16]} />
+                  <meshBasicMaterial color={glowColor} transparent opacity={0.6} />
+                </mesh>
+              </group>
+            }
+          />
+          {/* Emissive outer shell to highlight node on hover */}
+          <mesh>
+            <icosahedronGeometry args={[0.65, 1]} />
+            <meshBasicMaterial
+              color={glowColor}
+              wireframe={true}
+              transparent={true}
+              opacity={hovered ? 0.35 : 0.08}
+            />
+          </mesh>
+        </group>
+      ) : (
+        <group>
+          <mesh>
+            <icosahedronGeometry args={[0.55, 1]} />
+            <meshStandardMaterial
+              color={glowColor}
+              wireframe={true}
+              transparent={true}
+              opacity={0.8}
+              emissive={glowColor}
+              emissiveIntensity={hovered ? 3.0 : 1.2}
+            />
+          </mesh>
+          <mesh>
+            <sphereGeometry args={[0.25, 16, 16]} />
+            <meshBasicMaterial color={glowColor} transparent opacity={0.6} />
+          </mesh>
+        </group>
+      )}
 
       {hovered && (
         <Html distanceFactor={10} position={[0, 1.3, 0]} center zIndexRange={[100, 0]}>
