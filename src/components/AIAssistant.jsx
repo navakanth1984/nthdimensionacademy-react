@@ -29,7 +29,7 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
     try {
       setIsThinking(true);
       
-      const response = await fetch('http://localhost:8004/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text, lang: 'en' })
@@ -105,7 +105,7 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
         text: 'Synthesizing voice in the Nth Dimension...'
       }]);
 
-      const response = await fetch('http://localhost:8004/speak', {
+      const response = await fetch('/api/speak', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: lastSystemMsg.text, lang: 'te' }) // Default to Telugu as per static script
