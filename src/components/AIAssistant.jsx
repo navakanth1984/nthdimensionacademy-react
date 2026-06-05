@@ -128,6 +128,16 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
     }
   };
 
+  const formatMessageText = (text) => {
+    if (!text) return '';
+    // Replace standard URLs with styled anchor tags, excluding trailing punctuation
+    let formatted = text.replace(
+      /(https?:\/\/[^\s<]+[^.,:;?!()[\]{}'"`\s<])/g, 
+      '<a href="$1" target="_blank" class="text-hyper-drive-blue underline hover:text-[#00f0ff] transition-colors break-all" style="color: #00f0ff; text-decoration: underline;">$1</a>'
+    );
+    return formatted.replace(/\n/g, '<br>');
+  };
+
   return (
     <>
       {/* Floating Trigger Button */}
@@ -157,7 +167,7 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
                 <h4 className="text-sm font-bold text-cosmic-gold">Cosmic Guide</h4>
                 <span className="text-[10px] text-emerald-400 flex items-center gap-1 font-light">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Online | N<span className="nth-style">TH</span> Dimension
+                  Online | N<span className="nth-style">TH</span> Dimension Academy
                 </span>
               </div>
             </div>
@@ -179,12 +189,12 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
                 }`}
               >
                 <div 
-                  className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                  className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed break-all break-words overflow-wrap-anywhere ${
                     msg.sender === 'user' 
                       ? 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-br-none shadow-md' 
                       : 'bg-slate-900/80 border border-white/5 text-gray-200 rounded-bl-none shadow-sm'
                   }`}
-                  dangerouslySetInnerHTML={{ __html: msg.text.replace(/\n/g, '<br>') }}
+                  dangerouslySetInnerHTML={{ __html: formatMessageText(msg.text) }}
                 />
               </div>
             ))}

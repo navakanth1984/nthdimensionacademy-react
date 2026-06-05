@@ -345,7 +345,7 @@ function CentralHub({ mode }) {
   );
 }
 
-export default function NeuralCanvas({ mode = 'solar' }) {
+function NeuralSystem({ mode, children }) {
   const systemGroupRef = useRef();
 
   useFrame((state, delta) => {
@@ -364,6 +364,10 @@ export default function NeuralCanvas({ mode = 'solar' }) {
     }
   });
 
+  return <group ref={systemGroupRef}>{children}</group>;
+}
+
+export default function NeuralCanvas({ mode = 'solar' }) {
   return (
     <div className="absolute inset-0 w-full h-full bg-[#070913] z-0">
       <Canvas camera={{ position: [0, 0, 8.5], fov: 50 }}>
@@ -374,7 +378,7 @@ export default function NeuralCanvas({ mode = 'solar' }) {
         
         <Stars radius={100} depth={50} count={6000} factor={4} saturation={0.5} fade speed={1.2} />
 
-        <group ref={systemGroupRef}>
+        <NeuralSystem mode={mode}>
           {/* Central Sun / Nucleus / Hub */}
           <CentralHub mode={mode} />
 
@@ -407,7 +411,7 @@ export default function NeuralCanvas({ mode = 'solar' }) {
               );
             }
           })}
-        </group>
+        </NeuralSystem>
 
         <OrbitControls 
           enableDamping={true} 

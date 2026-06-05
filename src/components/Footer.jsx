@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Settings } from 'lucide-react';
+import { Mail, Settings, Phone } from 'lucide-react';
 
 const InstagramIcon = (props) => (
   <svg 
@@ -17,6 +17,24 @@ const InstagramIcon = (props) => (
     <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
+const YoutubeIcon = (props) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    {...props}
+  >
+    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+    <polygon points="10 15 15 12 10 9" />
   </svg>
 );
 
@@ -58,20 +76,32 @@ export default function Footer({ onOpenAdmin }) {
                 <span>mct@nthdimensionacademy.com</span>
               </a>
               <a 
-                href="tel:+919885757677" 
+                href="tel:+916304980314" 
                 className="flex items-center gap-2 md:justify-end hover:text-hyper-drive-blue transition-colors duration-300"
               >
                 <Phone className="h-4 w-4" />
-                <span>+91 9885757677</span>
+                <span>+91 6304980314</span>
+              </a>
+              <a 
+                href="https://www.youtube.com/@nthdimensionacademy" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 md:justify-end hover:text-hyper-drive-blue transition-colors duration-300"
+              >
+                <YoutubeIcon className="h-4 w-4" />
+                <span>YouTube (Work in Progress)</span>
               </a>
               <a 
                 href="https://instagram.com/nthdimensionacademy" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 md:justify-end hover:text-hyper-drive-blue transition-colors duration-300"
+                className="group relative flex items-center gap-2 md:justify-end hover:text-hyper-drive-blue transition-colors duration-300"
               >
                 <InstagramIcon className="h-4 w-4" />
                 <span>@nthdimensionacademy</span>
+                <div className="absolute bottom-full mb-2 hidden group-hover:block w-36 h-36 bg-[#05070f]/95 border border-hyper-drive-blue/30 rounded-xl p-2 shadow-[0_0_20px_rgba(0,240,255,0.3)] z-50 backdrop-blur-md left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-0">
+                  <img src="/assets/instagram_qr.png" alt="Instagram QR Code" className="w-full h-full object-cover rounded-lg" />
+                </div>
               </a>
               {onOpenAdmin && (
                 <button 

@@ -31,7 +31,7 @@ export default function Navbar({ onOpenPortal }) {
               className="h-10 w-10 rounded-full border border-cosmic-gold/50 object-cover shadow-[0_0_10px_rgba(255,215,0,0.5)]" 
             />
           </picture>
-          <span>N<span className="nth-style">TH</span> Dimension</span>
+          <span>N<span className="nth-style">TH</span> Dimension Academy</span>
         </div>
         <ul className="hidden md:flex items-center gap-8">
           <li>

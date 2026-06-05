@@ -58,8 +58,8 @@ export default function About({ content }) {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-hyper-drive-blue" />
-                  <a href="tel:+919885757677" className="hover:text-hyper-drive-blue transition-colors">
-                    +91 9885757677
+                  <a href="tel:+916304980314" className="hover:text-hyper-drive-blue transition-colors">
+                    +91 6304980314
                   </a>
                 </div>
               </div>
