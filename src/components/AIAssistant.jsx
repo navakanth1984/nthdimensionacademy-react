@@ -201,7 +201,7 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
                 }`}
               >
                 <div 
-                  className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed break-all break-words overflow-wrap-anywhere ${
+                  className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed break-words ${
                     msg.sender === 'user' 
                       ? 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-br-none shadow-md' 
                       : 'bg-slate-900/80 border border-white/5 text-gray-200 rounded-bl-none shadow-sm'
