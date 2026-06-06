@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Send, Mic, X, Minus, Sparkles } from 'lucide-react';
 
-export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, triggerQuery, setTriggerQuery }) {
+export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTriggerQuery }) {
   const [inputText, setInputText] = useState('');
   const [isThinking, setIsThinking] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      id: 'welcome',
+      sender: 'system',
+      text: 'Greetings, Voyager. I am your guide to the N<span class="nth-style">TH</span> Dimension Academy. How can I assist your data journey today?'
+    }
+  ]);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -16,11 +23,17 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
 
   useEffect(() => {
     if (triggerQuery) {
-      const { userText, apiPrompt } = triggerQuery;
-      // Add the user message directly to chat history
-      setMessages(prev => [...prev, { id: Date.now() + '-user', sender: 'user', text: userText }]);
-      // Fire callNIM with the prompt
-      callNIM(apiPrompt);
+      const { userText, apiPrompt, systemText } = triggerQuery;
+      
+      if (systemText) {
+        setMessages(prev => [...prev, { id: Date.now() + '-system-trig', sender: 'system', text: systemText }]);
+      } 
+      
+      if (userText && apiPrompt) {
+        setMessages(prev => [...prev, { id: Date.now() + '-user', sender: 'user', text: userText }]);
+        callNIM(apiPrompt);
+      }
+      
       if (setTriggerQuery) setTriggerQuery(null);
     }
   }, [triggerQuery]);

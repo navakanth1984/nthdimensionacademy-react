@@ -22,15 +22,7 @@ function App() {
   // Auth states
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
-  // Assistant Chat states
   const [isAssistantOpen, setIsAssistantOpen] = useState(false);
-  const [assistantMessages, setAssistantMessages] = useState([
-    {
-      id: 'welcome',
-      sender: 'system',
-      text: 'Greetings, Voyager. I am your guide to the N<span class="nth-style">TH</span> Dimension Academy. How can I assist your data journey today?'
-    }
-  ]);
   const [triggerQuery, setTriggerQuery] = useState(null);
 
   // Syllabus Modal states
@@ -171,17 +163,10 @@ function App() {
 
   const handlePlayDemo = () => {
     setIsAssistantOpen(true);
-    setAssistantMessages(prev => [
-      ...prev,
-      {
-        id: Date.now() + '-system-demo-init',
-        sender: 'system',
-        text: 'Initiating N<span class="nth-style">TH</span> Dimension Fabric Demo Masterclass... Observe the convergence of data streams.'
-      }
-    ]);
     setTriggerQuery({
       userText: 'Launch the Fabric Demo.',
-      apiPrompt: 'I am watching the Microsoft Fabric Demo. Explain the key architectural components being shown and how they align with the NTH Dimension.'
+      apiPrompt: 'I am watching the Microsoft Fabric Demo. Explain the key architectural components being shown and how they align with the NTH Dimension.',
+      systemText: 'Initiating N<span class="nth-style">TH</span> Dimension Fabric Demo Masterclass... Observe the convergence of data streams.'
     });
   };
 
@@ -223,8 +208,6 @@ function App() {
       <AIAssistant 
         isOpen={isAssistantOpen} 
         setIsOpen={setIsAssistantOpen} 
-        messages={assistantMessages} 
-        setMessages={setAssistantMessages} 
         triggerQuery={triggerQuery}
         setTriggerQuery={setTriggerQuery}
       />
