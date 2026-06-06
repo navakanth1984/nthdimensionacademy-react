@@ -34,10 +34,12 @@ export default function FabricDemo({ onPlayDemo }) {
           <div className="relative rounded-2xl overflow-hidden border border-hyper-drive-blue/30 max-w-[850px] mx-auto shadow-[0_0_30px_rgba(0,240,255,0.15)] bg-black/40">
             <video 
               ref={videoRef}
-              poster="/assets/fabric_demo_thumbnail_1778223436843.png" 
+              playsInline
+              preload="metadata"
               className="w-full h-auto aspect-video object-cover block"
             >
               <source src="/assets/fabric_video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
 
             {/* Play Overlay */}
