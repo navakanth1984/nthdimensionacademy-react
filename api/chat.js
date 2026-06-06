@@ -1,5 +1,5 @@
 // Vercel Serverless Function: API Chat Handler
-// Bridges directly to NVIDIA NIM (Llama 3.1 70B) for production live site.
+// Bridges directly to NVIDIA NIM (Llama 3.1 70B) with robust SSE streaming.
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -12,7 +12,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Message content is required' });
   }
 
-  // Retrieve NVIDIA API Key from Vercel Environment Variables
   const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY;
 
   if (!NVIDIA_API_KEY) {
@@ -32,11 +31,12 @@ export default async function handler(req, res) {
         messages: [
           { 
             role: 'system', 
-            content: 'You are the Cosmic Guide, a helpful and premium AI assistant for Nth Dimension Academy, owned by MCT Navakanth Reddy Dumpa. Help visitors learn about Microsoft Fabric (DP-700/DP-600) and Azure Databricks. Maintain a mystical yet highly professional tone. Keep responses short and punchy.' 
+            content: 'You are the Cosmic Guide, a helpful and premium AI assistant for Nth Dimension Academy, owned by MCT Navakanth Reddy Dumpa. Help visitors learn about Microsoft Fabric (DP-700/DP-600) and Azure Databricks. Maintain a mystical yet highly professional tone. Keep responses engaging and concise.' 
           },
           { role: 'user', content: message }
         ],
-        stream: false // Using non-streaming for simplicity and Vercel timeout safety
+        stream: true,
+        max_tokens: 1024
       })
     });
 
@@ -46,19 +46,42 @@ export default async function handler(req, res) {
       throw new Error(`NVIDIA API request failed with status ${response.status}`);
     }
 
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content || "The cosmos is silent. Please try again.";
-
-    // Send response back matching what AIAssistant expects for non-streaming
-    // Wait, AIAssistant currently expects Server-Sent Events (SSE) streaming!
-    // Let's format it as a single SSE event so we don't have to rewrite AIAssistant.jsx again.
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
       'Connection': 'keep-alive',
     });
 
-    res.write(`data: ${JSON.stringify({ content })}\n\n`);
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop(); // Keep the last incomplete line in the buffer
+      
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('data: ')) {
+          const dataStr = trimmed.substring(6).trim();
+          if (dataStr === '[DONE]') continue;
+          try {
+            const data = JSON.parse(dataStr);
+            const content = data.choices?.[0]?.delta?.content;
+            if (content) {
+              res.write(`data: ${JSON.stringify({ content })}\n\n`);
+            }
+          } catch (e) {
+            // Ignore incomplete JSON chunks from NVIDIA
+          }
+        }
+      }
+    }
+
     res.write(`data: [DONE]\n\n`);
     res.end();
 
@@ -69,7 +92,7 @@ export default async function handler(req, res) {
       'Cache-Control': 'no-cache',
       'Connection': 'keep-alive',
     });
-    res.write(`data: ${JSON.stringify({ content: 'Apologies, Voyager. The dimensional link is unstable. Please check the API configuration.' })}\n\n`);
+    res.write(`data: ${JSON.stringify({ content: '\n\n[System Interface Malfunction] The cosmic link is currently unstable. Please try again later.' })}\n\n`);
     res.write(`data: [DONE]\n\n`);
     res.end();
   }
