@@ -11,12 +11,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/chat': {
-        target: 'http://localhost:8004',
+        target: 'http://127.0.0.1:8004',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/chat/, '/chat')
       },
       '/api/speak': {
-        target: 'http://localhost:8004',
+        target: 'http://127.0.0.1:8004',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/speak/, '/speak')
       }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Navbar({ onOpenPortal }) {
+export default function Navbar({ onOpenPortal, onOpenAuth }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -56,10 +56,18 @@ export default function Navbar({ onOpenPortal }) {
           </li>
           <li>
             <button 
-              onClick={onOpenPortal}
-              className="px-4 py-1.5 rounded-full border border-cosmic-gold bg-cosmic-gold/5 text-cosmic-gold hover:bg-cosmic-gold hover:text-black text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-[0_0_10px_rgba(255,215,0,0.15)] hover:scale-105"
+              disabled
+              className="px-4 py-1.5 rounded-full border border-gray-500 bg-gray-500/10 text-gray-400 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-not-allowed opacity-60"
             >
-              Student Portal
+              Sign In <span className="text-[10px] text-gray-500 ml-1">(Coming Soon)</span>
+            </button>
+          </li>
+          <li>
+            <button 
+              disabled
+              className="px-4 py-1.5 rounded-full border border-gray-500 bg-gray-500/10 text-gray-400 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-not-allowed opacity-60"
+            >
+              Student Portal <span className="text-[10px] text-gray-500 ml-1">(Coming Soon)</span>
             </button>
           </li>
         </ul>

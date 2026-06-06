@@ -28,9 +28,12 @@ export default function CurriculumMap() {
           </div>
 
           {/* User Hint overlay (Top-Left) */}
-          <div className="absolute top-6 left-6 z-10 flex items-center gap-2 px-4 py-2 rounded-xl bg-black/60 border border-white/5 backdrop-blur-md text-[10px] md:text-xs text-hyper-drive-blue font-mono uppercase tracking-wider select-none pointer-events-none shadow-[0_0_15px_rgba(0,240,255,0.15)]">
-            <MousePointerClick className="h-4 w-4 animate-bounce" />
-            <span>Drag to rotate | Scroll to zoom | Hover nodes for info</span>
+          <div className="absolute top-6 left-6 z-10 flex flex-col sm:flex-row items-start sm:items-center gap-2 px-4 py-2 rounded-xl bg-black/60 border border-white/5 backdrop-blur-md text-[10px] md:text-xs text-hyper-drive-blue font-mono uppercase tracking-wider select-none pointer-events-none shadow-[0_0_15px_rgba(0,240,255,0.15)]">
+            <div className="flex items-center gap-2">
+              <MousePointerClick className="h-4 w-4 animate-bounce" />
+              <span className="hidden md:inline">Drag to rotate | Scroll to zoom | Click nodes</span>
+              <span className="md:hidden">1 Finger: Rotate | 2 Fingers: Zoom</span>
+            </div>
           </div>
 
           {/* Version Switcher Control Overlay (Bottom-Right) */}

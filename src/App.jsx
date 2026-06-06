@@ -6,7 +6,6 @@ import Expertise from './components/Expertise';
 import CurriculumMap from './components/CurriculumMap';
 import Training from './components/Training';
 import AsymmetricSection from './components/AsymmetricSection';
-import Experience from './components/Experience';
 import Achievements from './components/Achievements';
 import FabricDemo from './components/FabricDemo';
 import Footer from './components/Footer';
@@ -14,9 +13,14 @@ import SyllabusModal from './components/SyllabusModal';
 import AIAssistant from './components/AIAssistant';
 import CMSDashboard from './components/CMSDashboard';
 import StudentDashboard from './components/StudentDashboard';
+import AuthModal from './components/AuthModal';
+import Pricing from './components/Pricing';
 
 function App() {
   const glowRef = useRef(null);
+
+  // Auth states
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   // Assistant Chat states
   const [isAssistantOpen, setIsAssistantOpen] = useState(false);
@@ -39,6 +43,9 @@ function App() {
 
   // Student Portal states
   const [isStudentPortalOpen, setIsStudentPortalOpen] = useState(false);
+
+  // Atlas Iframe Overlay state
+  const [atlasIframeUrl, setAtlasIframeUrl] = useState(null);
 
   // Fetch website conformed content from MongoDB Atlas API on mount
   useEffect(() => {
@@ -89,14 +96,57 @@ function App() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Handlers for dynamic page components integration
   const handleOpenSyllabus = (courseId) => {
     setSyllabusCourseId(courseId);
     setIsSyllabusOpen(true);
   };
 
+  useEffect(() => {
+    const handleMessage = (event) => {
+      if (event.data?.type === 'OPEN_AUTH') {
+        setIsAuthOpen(true);
+      } else if (event.data?.type === 'OPEN_PORTAL') {
+        setIsStudentPortalOpen(true);
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
+  useEffect(() => {
+    window.handleNodeClick = (courseId) => {
+      // Provide exactly the same system as the live website for atlas links
+      if (courseId === 'DP-700') {
+        setAtlasIframeUrl('/dp700-atlas/index.html');
+        return;
+      }
+      if (courseId === 'DP-600') {
+        setAtlasIframeUrl('/dp600-atlas/index.html');
+        return;
+      }
+
+      setIsAssistantOpen(true);
+      setTriggerQuery({
+        userText: `Explore ${courseId} details`,
+        apiPrompt: `I am looking at the 3D visualization for ${courseId}. Tell me about its core curriculum and why it is important in the Nth Dimension Academy.`
+      });
+    };
+    return () => { delete window.handleNodeClick; };
+  }, []);
+
   const handleBeginAscent = (courseId) => {
     setIsSyllabusOpen(false);
+
+    // Unify with live website: Open the immersive Atlas directly
+    if (courseId === 'dp700') {
+      setAtlasIframeUrl('/dp700-atlas/index.html');
+      return;
+    }
+    if (courseId === 'dp600') {
+      setAtlasIframeUrl('/dp600-atlas/index.html');
+      return;
+    }
+
     setIsAssistantOpen(true);
 
     let userText = '';
@@ -142,7 +192,7 @@ function App() {
       <div className="cursor-glow hidden md:block" ref={glowRef} />
 
       {/* Navbar Header */}
-      <Navbar onOpenPortal={() => setIsStudentPortalOpen(true)} />
+      <Navbar onOpenPortal={() => setIsStudentPortalOpen(true)} onOpenAuth={() => setIsAuthOpen(true)} />
 
       {/* Page Sections (Bind MongoDB text states if loaded) */}
       <Hero content={contentData?.hero} />
@@ -150,8 +200,8 @@ function App() {
       <Expertise />
       <CurriculumMap />
       <Training onOpenSyllabus={handleOpenSyllabus} />
+      <Pricing />
       <AsymmetricSection />
-      <Experience content={contentData?.experience} />
       <Achievements content={contentData?.achievements} />
       <FabricDemo onPlayDemo={handlePlayDemo} />
 
@@ -162,7 +212,10 @@ function App() {
       <SyllabusModal 
         isOpen={isSyllabusOpen} 
         courseId={syllabusCourseId} 
-        onClose={() => setIsSyllabusOpen(false)} 
+        onClose={() => {
+          setIsSyllabusOpen(false);
+          if (window.resetNeuralCanvas) window.resetNeuralCanvas();
+        }} 
         onBeginAscent={handleBeginAscent} 
       />
 
@@ -191,6 +244,34 @@ function App() {
         isOpen={isStudentPortalOpen} 
         onClose={() => setIsStudentPortalOpen(false)} 
       />
+
+      {/* Authentication Modal Overlay */}
+      <AuthModal 
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
+      />
+
+      {/* Atlas Iframe Overlay - Keeps subdirectories in the same main web page */}
+      {atlasIframeUrl && (
+        <div className="fixed inset-0 z-[9999] bg-[#070913] animate-fade-in">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[10000] w-full max-w-[300px] flex justify-center pointer-events-none">
+            <button 
+              onClick={() => {
+                setAtlasIframeUrl(null);
+                if (window.resetNeuralCanvas) window.resetNeuralCanvas();
+              }}
+              className="pointer-events-auto bg-[#070913]/90 text-[#00ffff] border border-[#00ffff] px-8 py-3 rounded-full font-bold hover:bg-[#00ffff] hover:text-black hover:scale-105 transition-all backdrop-blur-xl shadow-[0_0_20px_rgba(0,255,255,0.4)] flex items-center justify-center gap-2 whitespace-nowrap"
+            >
+              ← Return to Main Academy
+            </button>
+          </div>
+          <iframe 
+            src={atlasIframeUrl} 
+            className="w-full h-full border-none" 
+            title="Atlas Visualisation"
+          />
+        </div>
+      )}
 
     </div>
   );

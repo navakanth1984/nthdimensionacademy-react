@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageSquare, Send, Mic, X, Sparkles } from 'lucide-react';
+import { MessageSquare, Send, Mic, X, Minus, Sparkles } from 'lucide-react';
 
 export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, triggerQuery, setTriggerQuery }) {
   const [inputText, setInputText] = useState('');
@@ -35,15 +35,15 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
         body: JSON.stringify({ message: text, lang: 'en' })
       });
 
+      // Add placeholder for system streaming message
+      const systemMsgId = Date.now() + '-system';
+      setMessages(prev => [...prev, { id: systemMsgId, sender: 'system', text: '' }]);
+
       setIsThinking(false);
 
       if (!response.ok) {
         throw new Error('Backend link failed.');
       }
-
-      // Add placeholder for system streaming message
-      const systemMsgId = Date.now() + '-system';
-      setMessages(prev => [...prev, { id: systemMsgId, sender: 'system', text: '' }]);
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder('utf-8');
@@ -58,8 +58,10 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
         
         for (const line of lines) {
           if (line.startsWith('data: ')) {
+            const dataStr = line.slice(6).trim();
+            if (dataStr === '[DONE]') continue;
             try {
-              const data = JSON.parse(line.slice(6));
+              const data = JSON.parse(dataStr);
               if (data.content) {
                 fullResponse += data.content;
                 // Update specific message in state
@@ -166,17 +168,27 @@ export default function AIAssistant({ isOpen, setIsOpen, messages, setMessages, 
               <div>
                 <h4 className="text-sm font-bold text-cosmic-gold">Cosmic Guide</h4>
                 <span className="text-[10px] text-emerald-400 flex items-center gap-1 font-light">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Online | N<span className="nth-style">TH</span> Dimension Academy
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                  <span>Online | N<span className="nth-style">TH</span> Dimension Academy</span>
                 </span>
               </div>
             </div>
-            <button 
-              onClick={() => setIsOpen(false)}
-              className="text-gray-400 hover:text-white transition-colors cursor-pointer"
-            >
-              <X className="h-5 w-5" />
-            </button>
+            <div className="flex items-center gap-1">
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="p-1 text-gray-400 hover:text-white hover:bg-white/10 rounded transition-colors cursor-pointer"
+                title="Minimize"
+              >
+                <Minus className="h-5 w-5" />
+              </button>
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="p-1 text-gray-400 hover:text-white hover:bg-white/10 rounded transition-colors cursor-pointer"
+                title="Close"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
           </div>
 
           {/* Chat Messages */}
