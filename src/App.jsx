@@ -171,7 +171,7 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen w-full text-slate-100 selection:bg-hyper-drive-blue selection:text-black antialiased overflow-hidden font-sans">
+    <div className="relative min-h-screen w-full text-slate-100 selection:bg-hyper-drive-blue selection:text-black antialiased overflow-x-hidden font-sans">
       
       {/* Interactive Cursor Glow */}
       <div className="cursor-glow hidden md:block" ref={glowRef} />
