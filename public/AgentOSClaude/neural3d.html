@@ -435,7 +435,7 @@ function detectWebGL() {
 }
 if (!detectWebGL()) {
   console.warn("WebGL not supported or disabled. Falling back to 2D layout.");
-  window.location.href = "/neural2d";
+  window.location.href = "neural.html";
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -878,7 +878,7 @@ function switchTab(tabId) {
 
 function toggleDimension() {
   // Graceful redirection to 2D neural view
-  window.location.href = "/neural2d";
+  window.location.href = "neural.html";
 }
 
 function buildLegend() {
