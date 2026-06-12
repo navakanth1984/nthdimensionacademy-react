@@ -216,7 +216,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 // ════════════════════════════════════════════════════════════════
 // CONFIG
 // ════════════════════════════════════════════════════════════════
-const API = "https://agent-os-140444598703.us-central1.run.app";
+const PROD_API = "https://agent-os-140444598703.us-central1.run.app";
+        const DEV_API = "https://crying-chili-almost.ngrok-free.dev";
+        const API = window.location.hostname.includes("nthdimensionacademy.com") ? PROD_API : DEV_API;
 
 const urlParams = new URLSearchParams(window.location.search);
 const urlKey = urlParams.get("key");

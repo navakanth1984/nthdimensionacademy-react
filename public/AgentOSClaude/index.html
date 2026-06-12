@@ -1637,7 +1637,9 @@ footer{text-align:center;color:var(--muted);font-size:11px;margin-top:24px;paddi
   resize();make();draw();
 })();
 
-const API = "https://agent-os-140444598703.us-central1.run.app";
+const PROD_API = "https://agent-os-140444598703.us-central1.run.app";
+        const DEV_API = "https://crying-chili-almost.ngrok-free.dev";
+        const API = window.location.hostname.includes("nthdimensionacademy.com") ? PROD_API : DEV_API;
 const APIKEY = "agent-os-review";
 
 const urlParams = new URLSearchParams(window.location.search);
