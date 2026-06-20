@@ -8,13 +8,13 @@ export default function About({ content }) {
 
   return (
     <section id="about" className="py-20 relative">
-      <div className="max-w-[1200px] mx-auto px-8">
-        <motion.div 
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8">
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glass-panel p-8 md:p-12 overflow-hidden"
+          className="glass-panel p-5 md:p-8 lg:p-12 overflow-hidden"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
@@ -65,27 +65,27 @@ export default function About({ content }) {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-4">
-                <motion.div 
+              <div className="grid grid-cols-3 gap-2 md:gap-4 pt-4">
+                <motion.div
                   whileHover={{ y: -4 }}
-                  className="glass-card p-4 rounded-2xl text-center border border-cosmic-gold/10"
+                  className="glass-card p-2 md:p-4 rounded-2xl text-center border border-cosmic-gold/10"
                 >
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-cosmic-gold">14+</h3>
-                  <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Years Exp</p>
+                  <h3 className="text-xl md:text-3xl font-extrabold text-cosmic-gold">14+</h3>
+                  <p className="text-[10px] md:text-xs text-gray-400 mt-1 uppercase tracking-wider whitespace-nowrap">Years Exp</p>
                 </motion.div>
-                <motion.div 
+                <motion.div
                   whileHover={{ y: -4 }}
-                  className="glass-card p-4 rounded-2xl text-center border border-cosmic-gold/10"
+                  className="glass-card p-2 md:p-4 rounded-2xl text-center border border-cosmic-gold/10"
                 >
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-cosmic-gold">MCT</h3>
-                  <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Certified</p>
+                  <h3 className="text-xl md:text-3xl font-extrabold text-cosmic-gold">MCT</h3>
+                  <p className="text-[10px] md:text-xs text-gray-400 mt-1 uppercase tracking-wider whitespace-nowrap">Certified</p>
                 </motion.div>
-                <motion.div 
+                <motion.div
                   whileHover={{ y: -4 }}
-                  className="glass-card p-4 rounded-2xl text-center border border-cosmic-gold/10"
+                  className="glass-card p-2 md:p-4 rounded-2xl text-center border border-cosmic-gold/10"
                 >
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-cosmic-gold">5+</h3>
-                  <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Active Certs</p>
+                  <h3 className="text-xl md:text-3xl font-extrabold text-cosmic-gold">5+</h3>
+                  <p className="text-[10px] md:text-xs text-gray-400 mt-1 uppercase tracking-wider whitespace-nowrap">Active Certs</p>
                 </motion.div>
               </div>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -979,6 +979,8 @@ footer{border-top:1px solid var(--glass-line);padding:28px 48px;display:flex;
 function tog(btn){const b=btn.nextElementSibling;const o=!b.classList.contains('collapsed');b.classList.toggle('collapsed',o);btn.setAttribute('aria-expanded',!o);}
 function switchTo(id){document.querySelectorAll('[data-target]').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));document.querySelectorAll('[data-target="'+id+'"]').forEach(b=>b.classList.add('active'));document.getElementById(id).classList.add('active');const p=document.querySelector('.pill-nav-wrap');if(p)p.scrollIntoView({behavior:'smooth',block:'start'});}
 </script>
+
+<script src="/assets/mobile-atlas-nav.js"></script>
 </body>
 </html>
 

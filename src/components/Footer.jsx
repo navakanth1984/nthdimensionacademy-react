@@ -47,14 +47,11 @@ export default function Footer({ onOpenAdmin }) {
           {/* Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-lg md:text-xl font-bold text-cosmic-gold tracking-widest uppercase">
-              <picture>
-                <source media="(max-width: 768px)" srcSet="/assets/In_the_middle_of_the_202605052332.jpeg" />
-                <img 
-                  src="/assets/Merge_these_images_and_create_202605052035.jpeg" 
-                  alt="Logo" 
-                  className="h-10 w-10 rounded-full border border-cosmic-gold/50 object-cover shadow-[0_0_10px_rgba(255,215,0,0.5)]" 
-                />
-              </picture>
+              <img
+                src="/assets/Merge_these_images_and_create_202605052035.jpeg"
+                alt="Logo"
+                className="h-10 w-10 rounded-full border border-cosmic-gold/50 object-cover shadow-[0_0_10px_rgba(255,215,0,0.5)]"
+              />
               <span>N<span className="nth-style">TH</span> Dimension Academy</span>
             </div>
             <p className="text-sm text-gray-400 font-light max-w-sm">

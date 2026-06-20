@@ -15,6 +15,7 @@ import CMSDashboard from './components/CMSDashboard';
 import StudentDashboard from './components/StudentDashboard';
 import AuthModal from './components/AuthModal';
 import Pricing from './components/Pricing';
+import MobileNav from './components/MobileNav';
 
 function App() {
   const glowRef = useRef(null);
@@ -171,7 +172,7 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen w-full text-slate-100 selection:bg-hyper-drive-blue selection:text-black antialiased overflow-x-hidden font-sans">
+    <div className="relative min-h-screen w-full text-slate-100 selection:bg-hyper-drive-blue selection:text-black antialiased overflow-x-hidden font-sans pb-[64px] md:pb-0">
       
       {/* Interactive Cursor Glow */}
       <div className="cursor-glow hidden md:block" ref={glowRef} />
@@ -192,6 +193,9 @@ function App() {
 
       {/* Footer Details */}
       <Footer onOpenAdmin={() => setIsCMSOpen(true)} />
+
+      {/* Mobile thumb-zone bottom navigation */}
+      <MobileNav />
 
       {/* Syllabus Tabbed Modal overlay */}
       <SyllabusModal 
@@ -248,10 +252,21 @@ function App() {
               ← Return to Main Academy
             </button>
           </div>
-          <iframe 
-            src={atlasIframeUrl} 
-            className="w-full h-full border-none" 
+          <iframe
+            src={atlasIframeUrl}
+            className="w-full h-full border-none"
             title="Atlas Visualisation"
+            onLoad={(e) => {
+              try {
+                const href = e.target.contentWindow.location.href;
+                if (!href.includes('-atlas/')) {
+                  setAtlasIframeUrl(null);
+                  if (window.resetNeuralCanvas) window.resetNeuralCanvas();
+                }
+              } catch (_) {
+                // cross-origin — ignore
+              }
+            }}
           />
         </div>
       )}
