@@ -117,6 +117,14 @@ function App() {
         setAtlasIframeUrl('/dp600-atlas/index.html');
         return;
       }
+      if (courseId === 'DP-750') {
+        setAtlasIframeUrl('/dp750-atlas/index.html');
+        return;
+      }
+      if (courseId === 'DP-800') {
+        setAtlasIframeUrl('/dp800-atlas/index.html');
+        return;
+      }
 
       setIsAssistantOpen(true);
       setTriggerQuery({
@@ -137,6 +145,14 @@ function App() {
     }
     if (courseId === 'dp600') {
       setAtlasIframeUrl('/dp600-atlas/index.html');
+      return;
+    }
+    if (courseId === 'dp750') {
+      setAtlasIframeUrl('/dp750-atlas/index.html');
+      return;
+    }
+    if (courseId === 'dp800') {
+      setAtlasIframeUrl('/dp800-atlas/index.html');
       return;
     }
 
@@ -241,17 +257,6 @@ function App() {
       {/* Atlas Iframe Overlay - Keeps subdirectories in the same main web page */}
       {atlasIframeUrl && (
         <div className="fixed inset-0 z-[9999] bg-[#070913] animate-fade-in">
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[10000] w-full max-w-[300px] flex justify-center pointer-events-none">
-            <button 
-              onClick={() => {
-                setAtlasIframeUrl(null);
-                if (window.resetNeuralCanvas) window.resetNeuralCanvas();
-              }}
-              className="pointer-events-auto bg-[#070913]/90 text-[#00ffff] border border-[#00ffff] px-8 py-3 rounded-full font-bold hover:bg-[#00ffff] hover:text-black hover:scale-105 transition-all backdrop-blur-xl shadow-[0_0_20px_rgba(0,255,255,0.4)] flex items-center justify-center gap-2 whitespace-nowrap"
-            >
-              ← Return to Main Academy
-            </button>
-          </div>
           <iframe
             src={atlasIframeUrl}
             className="w-full h-full border-none"

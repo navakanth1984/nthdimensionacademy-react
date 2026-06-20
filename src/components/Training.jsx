@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitBranch, BarChart3, Database, Compass, ArrowUpRight } from 'lucide-react';
+import { GitBranch, BarChart3, Database, Compass, ArrowUpRight, BrainCircuit, Server } from 'lucide-react';
 
 export default function Training({ onOpenSyllabus }) {
   const courses = [
@@ -28,6 +28,32 @@ export default function Training({ onOpenSyllabus }) {
       color: '#8a2be2',
       bgColor: 'rgba(138, 43, 226, 0.08)',
       borderColor: 'rgba(138, 43, 226, 0.25)',
+      levelText: 'Level: Specialist',
+    },
+    {
+      id: 'dp750',
+      tag: 'DP-750 Masterclass',
+      title: 'Implement a Lakehouse with Microsoft Fabric',
+      status: 'ACTIVE',
+      level: 'Specialist',
+      desc: 'Design and implement a full lakehouse solution using Microsoft Fabric. Covers data ingestion, Delta Lake storage, Spark transformations, and semantic model integration.',
+      icon: BrainCircuit,
+      color: '#22d3ee',
+      bgColor: 'rgba(34, 211, 238, 0.08)',
+      borderColor: 'rgba(34, 211, 238, 0.25)',
+      levelText: 'Level: Specialist',
+    },
+    {
+      id: 'dp800',
+      tag: 'DP-800 Masterclass',
+      title: 'Implementing a Data Science Solution on Azure',
+      status: 'ACTIVE',
+      level: 'Specialist',
+      desc: 'Build end-to-end data science solutions on Microsoft Fabric and Azure. Covers ML experimentation, model training with Spark, MLflow tracking, and deployment pipelines.',
+      icon: Server,
+      color: '#a78bfa',
+      bgColor: 'rgba(167, 139, 250, 0.08)',
+      borderColor: 'rgba(167, 139, 250, 0.25)',
       levelText: 'Level: Specialist',
     },
     {

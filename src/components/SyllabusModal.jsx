@@ -169,6 +169,154 @@ const syllabusData = {
       }
     ]
   },
+  dp750: {
+    trustPill: "DP-750 MASTER CURRICULUM",
+    title: "Implement a Lakehouse with Microsoft Fabric",
+    status: "active",
+    statusText: "Active",
+    exam: "Exam DP-750",
+    credential: "Microsoft Certified: Fabric Data Engineer Associate",
+    level: "Specialist",
+    cost: "$165 USD",
+    weights: [
+      { topic: "Design & Implement a Lakehouse", weight: "30–35%" },
+      { topic: "Ingest & Transform Data", weight: "25–30%" },
+      { topic: "Implement Semantic Models & Reporting", weight: "20–25%" },
+      { topic: "Monitor & Optimize", weight: "15–20%" }
+    ],
+    description: [
+      "Led by Master Consultant and Microsoft Certified Trainer (MCT) <strong>Navakanth Reddy Dumpa</strong>, this curriculum focuses on implementing a complete lakehouse solution on Microsoft Fabric — from raw ingestion to curated semantic layers ready for enterprise reporting.",
+      "Designed for data engineers and architects looking to master Delta Lake storage, Spark-based transformations, OneLake management, and end-to-end medallion pipelines within the unified Fabric SaaS platform."
+    ],
+    tracks: [
+      {
+        title: "🏗️ Track 1: Lakehouse Architecture & OneLake Design",
+        desc: "Plan and provision Fabric workspaces, design OneLake folder structures, configure Delta Parquet storage, and establish Bronze/Silver/Gold medallion layers."
+      },
+      {
+        title: "🚀 Track 2: Data Ingestion Patterns",
+        desc: "Build Data Factory pipelines, configure Dataflows Gen2, set up OneLake shortcuts (ADLS Gen2, S3, GCS), and implement database mirroring for continuous replication."
+      },
+      {
+        title: "💻 Track 3: Spark Transformations & Optimization",
+        desc: "Author PySpark notebooks for large-scale joins, deduplication, and schema evolution. Apply OPTIMIZE, Z-ORDER, and VACUUM for Delta table performance."
+      },
+      {
+        title: "📊 Track 4: Semantic Models & Direct Lake",
+        desc: "Build Star Schema semantic models in Power BI, configure Direct Lake mode for zero-copy reporting, and write DAX measures for business KPIs."
+      },
+      {
+        title: "🔒 Track 5: Security, Governance & CI/CD",
+        desc: "Implement RLS/CLS policies, register lineage in Purview, connect workspaces to Git, and deploy multi-stage release pipelines."
+      }
+    ],
+    labs: [
+      {
+        num: "LAB 01",
+        title: "Provision & Configure a Fabric Lakehouse",
+        desc: "Create a Fabric workspace, configure OneLake, import structured datasets, and query raw files via SQL endpoints."
+      },
+      {
+        num: "LAB 02",
+        title: "Build Bronze-to-Gold Medallion Pipelines",
+        desc: "Implement a three-layer medallion architecture with automated pipeline triggers and incremental load patterns."
+      },
+      {
+        num: "LAB 03",
+        title: "No-Code Transformation with Dataflows Gen2",
+        desc: "Use Power Query Online to cleanse, reshape, and load dimension tables into the Silver layer without writing code."
+      },
+      {
+        num: "LAB 04",
+        title: "PySpark Notebook Engineering",
+        desc: "Author advanced Spark notebooks for large-scale joins, window functions, schema evolution, and partitioned Delta output."
+      },
+      {
+        num: "LAB 05",
+        title: "Delta Lake Time Travel & Optimization",
+        desc: "Query historical snapshots using versionAsOf, restore table versions, and run OPTIMIZE with Z-ORDER for query acceleration."
+      },
+      {
+        num: "LAB 06",
+        title: "Semantic Model & Direct Lake Reporting",
+        desc: "Design a Star Schema model in Power BI Desktop, connect via Direct Lake, and publish enterprise-grade dashboards."
+      }
+    ]
+  },
+  dp800: {
+    trustPill: "DP-800 MASTER CURRICULUM",
+    title: "Implementing a Data Science Solution on Azure",
+    status: "active",
+    statusText: "Active",
+    exam: "Exam DP-800",
+    credential: "Microsoft Certified: Fabric Data Scientist Associate",
+    level: "Specialist",
+    cost: "$165 USD",
+    weights: [
+      { topic: "Design & Prepare Data for ML", weight: "25–30%" },
+      { topic: "Build & Train ML Models", weight: "30–35%" },
+      { topic: "Manage & Deploy Models", weight: "20–25%" },
+      { topic: "Monitor & Optimize Solutions", weight: "15–20%" }
+    ],
+    description: [
+      "Led by Master Consultant and Microsoft Certified Trainer (MCT) <strong>Navakanth Reddy Dumpa</strong>, this curriculum covers the full lifecycle of data science on Microsoft Fabric — from feature engineering and Spark-based ML training to MLflow experiment tracking and model deployment.",
+      "Designed for data scientists and ML engineers working in the Azure and Fabric ecosystem who want to operationalize machine learning at enterprise scale."
+    ],
+    tracks: [
+      {
+        title: "📐 Track 1: Data Preparation & Feature Engineering",
+        desc: "Profile raw datasets, handle missing values, encode categorical features, and engineer training features using PySpark and pandas on Fabric."
+      },
+      {
+        title: "🤖 Track 2: ML Model Training with Spark & MLflow",
+        desc: "Train Scikit-learn and Spark MLlib models in Fabric Notebooks, track experiments with MLflow, compare runs, and register champion models."
+      },
+      {
+        title: "🚀 Track 3: Model Deployment & Batch Scoring",
+        desc: "Deploy registered MLflow models, build batch inference pipelines using Data Factory, and score large datasets in OneLake."
+      },
+      {
+        title: "📊 Track 4: Real-Time Inference & API Integration",
+        desc: "Configure real-time endpoints, integrate model predictions into Power BI reports, and build REST API wrappers for downstream consumption."
+      },
+      {
+        title: "🔒 Track 5: Responsible AI & Governance",
+        desc: "Apply fairness assessments, configure model explainability with SHAP, register lineage in Purview, and enforce data governance policies."
+      }
+    ],
+    labs: [
+      {
+        num: "LAB 01",
+        title: "Exploratory Data Analysis on Fabric",
+        desc: "Load raw data into a Fabric Lakehouse, profile distributions, detect outliers, and visualize feature correlations using Spark notebooks."
+      },
+      {
+        num: "LAB 02",
+        title: "Feature Engineering & Data Preparation",
+        desc: "Impute missing values, encode categoricals, scale numeric features, and persist engineered datasets as Delta tables."
+      },
+      {
+        num: "LAB 03",
+        title: "Train & Track Models with MLflow",
+        desc: "Train classification and regression models, log parameters and metrics to MLflow, compare experiment runs, and register the best model."
+      },
+      {
+        num: "LAB 04",
+        title: "Hyperparameter Tuning with Spark",
+        desc: "Use Spark MLlib CrossValidator and ParamGridBuilder to tune model hyperparameters at scale across a distributed cluster."
+      },
+      {
+        num: "LAB 05",
+        title: "Batch Inference Pipeline",
+        desc: "Build a Data Factory pipeline that loads the champion model and scores a new dataset in OneLake, writing predictions back as Delta tables."
+      },
+      {
+        num: "LAB 06",
+        title: "Model Explainability & Responsible AI",
+        desc: "Apply SHAP values to explain predictions, generate feature importance charts, and document model cards for governance compliance."
+      }
+    ]
+  },
   dp900: {
     trustPill: "DP-900 CURRICULUM",
     title: "Azure Data Fundamentals (Coming Soon)",
