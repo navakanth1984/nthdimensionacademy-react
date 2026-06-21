@@ -20,6 +20,20 @@ const curriculumData = [
     modelUrl: '/assets/models/analytics_prism.glb'
   },
   {
+    id: 'DP-750',
+    title: 'Implement a Lakehouse with Microsoft Fabric',
+    status: 'ACTIVE',
+    level: 'Specialist Syllabus',
+    modelUrl: '/assets/models/analytics_prism.glb'
+  },
+  {
+    id: 'DP-800',
+    title: 'Implementing a Data Science Solution on Azure',
+    status: 'ACTIVE',
+    level: 'Specialist Syllabus',
+    modelUrl: '/assets/models/azure_core.glb'
+  },
+  {
     id: 'DP-203',
     title: 'Azure Data Engineering',
     status: 'RETIRED',
@@ -47,6 +61,8 @@ const getStatusColor = (status) => {
 const atomTilts = [
   [Math.PI / 4, 0, Math.PI / 4],
   [-Math.PI / 4, 0, Math.PI / 4],
+  [Math.PI / 3, Math.PI / 6, -Math.PI / 6],
+  [-Math.PI / 3, -Math.PI / 6, Math.PI / 6],
   [Math.PI / 2, Math.PI / 4, 0],
   [0, -Math.PI / 4, Math.PI / 3]
 ];
@@ -54,6 +70,8 @@ const atomTilts = [
 const vertices = [
   [-2.2, 1.8, 1.3],
   [2.2, 2.2, -1.8],
+  [-2.5, 0, -2.0],
+  [2.5, 0, 2.0],
   [-1.8, -2.2, -2.2],
   [1.8, -1.8, 2.2]
 ];
