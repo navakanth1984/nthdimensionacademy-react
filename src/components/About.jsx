@@ -25,11 +25,17 @@ export default function About({ content }) {
                 transition={{ type: 'spring', stiffness: 300, damping: 15 }}
                 className="relative rounded-2xl overflow-hidden border border-cosmic-gold/20 shadow-2xl max-w-[350px] w-full"
               >
-                <img 
-                  src="/assets/media__1777542950074.jpg" 
-                  alt="Navakanth Reddy Dumpa - MCT" 
-                  className="w-full h-auto object-cover aspect-[4/5]"
-                />
+                <picture>
+                  <source srcSet="/assets/badge_mct_hero.avif" type="image/avif" />
+                  <source srcSet="/assets/badge_mct_hero.webp" type="image/webp" />
+                  <img 
+                    src="/assets/badge_mct_hero.jpg" 
+                    alt="Navakanth Reddy Dumpa - MCT" 
+                    className="w-full h-auto object-cover aspect-[4/5]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-deep-space-black/80 via-transparent to-transparent"></div>
               </motion.div>
             </div>

@@ -1,49 +1,60 @@
 // Vercel Serverless Function: API Chat Handler
-// Bridges directly to NVIDIA NIM (Llama 3.1 70B) with robust SSE streaming.
+// Bridges directly to Google Gemini API (gemini-2.5-flash) with robust streaming.
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { message, lang } = req.body;
+  const { message } = req.body;
 
   if (!message) {
     return res.status(400).json({ error: 'Message content is required' });
   }
 
-  const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY;
+  const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-  if (!NVIDIA_API_KEY) {
-    console.error("NVIDIA_API_KEY is not configured in Vercel environment.");
+  if (!GEMINI_API_KEY) {
+    console.error("GEMINI_API_KEY is not configured in Vercel environment.");
     return res.status(500).json({ error: 'Server configuration error. API Key missing.' });
   }
 
   try {
-    const response = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${NVIDIA_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'meta/llama-3.1-70b-instruct',
-        messages: [
-          { 
-            role: 'system', 
-            content: 'You are the Cosmic Guide, a helpful and premium AI assistant for Nth Dimension Academy, owned by MCT Navakanth Reddy Dumpa. Help visitors learn about Microsoft Fabric (DP-700/DP-600) and Azure Databricks. Maintain a mystical yet highly professional tone. Keep responses engaging and concise.' 
+    const systemInstruction = 
+      "You are the Academy Assistant, a helpful and premium AI guide for Nth Dimension Academy, " +
+      "owned by MCT Navakanth Reddy Dumpa. Help visitors learn about our training courses, Microsoft Fabric " +
+      "(DP-700/DP-600), Azure Databricks, and Medallion Architecture. Maintain a mystical yet highly professional tone. " +
+      "Keep responses engaging, structured, and concise.";
+
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: 'user',
+              parts: [{ text: message }]
+            }
+          ],
+          systemInstruction: {
+            parts: [{ text: systemInstruction }]
           },
-          { role: 'user', content: message }
-        ],
-        stream: true,
-        max_tokens: 1024
-      })
-    });
+          generationConfig: {
+            maxOutputTokens: 1024,
+            temperature: 0.7
+          }
+        })
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('NIM Error Response:', errorText);
-      throw new Error(`NVIDIA API request failed with status ${response.status}`);
+      console.error('Gemini API Error Response:', errorText);
+      throw new Error(`Gemini API request failed with status ${response.status}`);
     }
 
     res.writeHead(200, {
@@ -61,24 +72,26 @@ export default async function handler(req, res) {
       if (done) break;
       
       buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop(); // Keep the last incomplete line in the buffer
       
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (trimmed.startsWith('data: ')) {
-          const dataStr = trimmed.substring(6).trim();
-          if (dataStr === '[DONE]') continue;
-          try {
-            const data = JSON.parse(dataStr);
-            const content = data.choices?.[0]?.delta?.content;
-            if (content) {
-              res.write(`data: ${JSON.stringify({ content })}\n\n`);
-            }
-          } catch (e) {
-            // Ignore incomplete JSON chunks from NVIDIA
+      const regex = /"text":\s*"((?:[^"\\]|\\.)*)"/g;
+      let match;
+      let lastIndex = 0;
+      
+      while ((match = regex.exec(buffer)) !== null) {
+        const textVal = match[1];
+        try {
+          const rawText = JSON.parse(`"${textVal}"`);
+          if (rawText) {
+            res.write(`data: ${JSON.stringify({ content: rawText })}\n\n`);
           }
+        } catch (e) {
+          // Ignore JSON parse error on incomplete sequences
         }
+        lastIndex = regex.lastIndex;
+      }
+      
+      if (lastIndex > 0) {
+        buffer = buffer.substring(lastIndex);
       }
     }
 

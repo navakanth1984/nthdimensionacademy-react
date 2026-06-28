@@ -12,6 +12,7 @@ export default function AuthModal({ isOpen, onClose }) {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
+    if (!auth) return;
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });

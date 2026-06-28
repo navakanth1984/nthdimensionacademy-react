@@ -8,7 +8,7 @@ export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTrigge
     {
       id: 'welcome',
       sender: 'system',
-      text: 'Greetings, Voyager. I am your guide to the N<span class="nth-style">TH</span> Dimension Academy. How can I assist your data journey today?'
+      text: 'Greetings, Voyager. I am your Academy Assistant for the N<span class="nth-style">TH</span> Dimension Academy. How can I assist your data journey today?'
     }
   ]);
   const messagesEndRef = useRef(null);
@@ -94,7 +94,7 @@ export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTrigge
       setMessages(prev => [...prev, {
         id: Date.now() + '-err',
         sender: 'system',
-        text: 'Apologies, Voyager. The dimensional link is unstable. Please ensure the backend is running on port 8004.'
+        text: 'Apologies, Voyager. The dimensional link is unstable. Please try again later.'
       }]);
     }
   };
@@ -162,7 +162,7 @@ export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTrigge
           className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-full border border-hyper-drive-blue bg-[#00f0ff]/5 text-hyper-drive-blue shadow-[0_0_15px_rgba(0,240,255,0.2)] hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] hover:scale-105 hover:bg-[#00f0ff]/10 transition-all duration-300 font-medium tracking-wide uppercase text-xs cursor-pointer"
         >
           <MessageSquare className="h-5 w-5 fill-none" />
-          <span>Ask Guide</span>
+          <span>Academy Assistant</span>
         </button>
       )}
 
@@ -179,7 +179,7 @@ export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTrigge
                 className="h-9 w-9 rounded-full object-cover border border-cosmic-gold/50" 
               />
               <div>
-                <h4 className="text-sm font-bold text-cosmic-gold">Cosmic Guide</h4>
+                <h4 className="text-sm font-bold text-cosmic-gold">Academy Assistant</h4>
                 <span className="text-[10px] text-emerald-400 flex items-center gap-1 font-light">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                   <span>Online | N<span className="nth-style">TH</span> Dimension Academy</span>
@@ -227,7 +227,7 @@ export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTrigge
             {isThinking && (
               <div className="flex items-center gap-2 text-xs text-cosmic-gold font-light animate-pulse select-none">
                 <Sparkles className="h-4 w-4 text-cosmic-gold" />
-                <span>The Guide is consulting the Nth Dimension...</span>
+                <span>The Assistant is consulting the Nth Dimension...</span>
               </div>
             )}
             
@@ -241,7 +241,7 @@ export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTrigge
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-              placeholder="Ask about Fabric, Azure, or DP-700..." 
+              placeholder="Ask about courses, Fabric, Azure, or DP-700..." 
               className="flex-1 text-sm bg-[#05070f]/50 border border-hyper-drive-blue/30 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-hyper-drive-blue transition-colors"
             />
             <button 
