@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function ScrollProgress() {
+export default function ScrollProgress({ showPill = false }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [currentSection, setCurrentSection] = useState('Welcome');
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -83,14 +83,16 @@ export default function ScrollProgress() {
       />
       
       {/* Active Section HUD Pill */}
-      <div className="absolute top-[8px] right-8 pointer-events-auto">
-        <div className="glass-panel px-4 py-1.5 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-slate-300 shadow-[0_4px_12px_rgba(0,0,0,0.4)] border border-cosmic-gold/20">
-          <span className="w-1.5 h-1.5 rounded-full bg-hyper-drive-blue animate-pulse" />
-          <span className="text-cosmic-gold tracking-widest">{currentSection}</span>
-          <span className="text-slate-500">|</span>
-          <span className="font-mono text-[10px] text-hyper-drive-blue">{scrollProgress}%</span>
+      {showPill && (
+        <div className="absolute top-[8px] right-8 pointer-events-auto">
+          <div className="glass-panel px-4 py-1.5 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-slate-300 shadow-[0_4px_12px_rgba(0,0,0,0.4)] border border-cosmic-gold/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-hyper-drive-blue animate-pulse" />
+            <span className="text-cosmic-gold tracking-widest">{currentSection}</span>
+            <span className="text-slate-500">|</span>
+            <span className="font-mono text-[10px] text-hyper-drive-blue">{scrollProgress}%</span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
