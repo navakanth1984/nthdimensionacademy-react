@@ -46,6 +46,14 @@ function App() {
   // Atlas Iframe Overlay state
   const [atlasIframeUrl, setAtlasIframeUrl] = useState(null);
 
+  // HUD Visibility Check
+  const [hudEnabled, setHudEnabled] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setHudEnabled(params.has('hud') || params.has('debug'));
+  }, []);
+
   // Fetch website conformed content from MongoDB Atlas API on mount
   useEffect(() => {
     const fetchContent = async () => {
@@ -197,8 +205,8 @@ function App() {
     <div className="relative min-h-screen w-full text-slate-100 selection:bg-hyper-drive-blue selection:text-black antialiased overflow-x-hidden font-sans pb-[64px] md:pb-0">
       
       {/* Scroll Progress & Learning HUD */}
-      <ScrollProgress />
-      <EngagementHUD />
+      <ScrollProgress showPill={hudEnabled} />
+      {hudEnabled && <EngagementHUD />}
 
       {/* Interactive Cursor Glow */}
       <div className="cursor-glow hidden md:block" ref={glowRef} />
