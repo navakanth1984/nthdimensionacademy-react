@@ -16,9 +16,15 @@ import StudentDashboard from './components/StudentDashboard';
 import AuthModal from './components/AuthModal';
 import Pricing from './components/Pricing';
 import MobileNav from './components/MobileNav';
+import AdvancedNotebookLMDashboard from './components/AdvancedNotebookLMDashboard';
+import ScrollProgress from './components/ScrollProgress';
+import EngagementHUD from './components/EngagementHUD';
 
 function App() {
   const glowRef = useRef(null);
+
+  // Advanced Standalone state
+  const [showAdvancedNLM, setShowAdvancedNLM] = useState(false);
 
   // Auth states
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -190,6 +196,10 @@ function App() {
   return (
     <div className="relative min-h-screen w-full text-slate-100 selection:bg-hyper-drive-blue selection:text-black antialiased overflow-x-hidden font-sans pb-[64px] md:pb-0">
       
+      {/* Scroll Progress & Learning HUD */}
+      <ScrollProgress />
+      <EngagementHUD />
+
       {/* Interactive Cursor Glow */}
       <div className="cursor-glow hidden md:block" ref={glowRef} />
 
@@ -197,15 +207,43 @@ function App() {
       <Navbar onOpenPortal={() => setIsStudentPortalOpen(true)} onOpenAuth={() => setIsAuthOpen(true)} />
 
       {/* Page Sections (Bind MongoDB text states if loaded) */}
-      <Hero content={contentData?.hero} />
-      <About content={contentData?.about} />
-      <Expertise />
-      <CurriculumMap />
-      <Training onOpenSyllabus={handleOpenSyllabus} />
-      <Pricing />
+      <div data-section="Academy Ascent">
+        <Hero content={contentData?.hero} />
+      </div>
+      <div data-section="About MCT">
+        <About content={contentData?.about} />
+      </div>
+      <div data-section="Core Expertise">
+        <Expertise />
+      </div>
+      <div data-section="Curriculum Map">
+        <CurriculumMap />
+      </div>
+      <div data-section="Training Pathways">
+        <Training onOpenSyllabus={handleOpenSyllabus} />
+      </div>
+      
+      {/* Launch Advanced UI Button */}
+      <div className="flex justify-center my-12">
+        <button 
+          onClick={() => setShowAdvancedNLM(true)}
+          className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-bold text-white shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:shadow-[0_0_60px_rgba(168,85,247,0.6)] transition-all hover:scale-105"
+        >
+          <span className="tracking-widest uppercase text-sm">Launch Advanced NotebookLM Dashboard</span>
+        </button>
+      </div>
+
+      <div data-section="Pricing Details">
+        <Pricing />
+      </div>
       <AsymmetricSection />
-      <Achievements content={contentData?.achievements} />
-      <FabricDemo onPlayDemo={handlePlayDemo} />
+      <div data-section="Achievements">
+        <Achievements content={contentData?.achievements} />
+      </div>
+      <div data-section="Fabric Demo">
+        <FabricDemo onPlayDemo={handlePlayDemo} />
+      </div>
+
 
       {/* Footer Details */}
       <Footer onOpenAdmin={() => setIsCMSOpen(true)} />
@@ -275,6 +313,9 @@ function App() {
           />
         </div>
       )}
+
+      {/* Advanced Full-Screen Standalone Takeover */}
+      {showAdvancedNLM && <AdvancedNotebookLMDashboard onClose={() => setShowAdvancedNLM(false)} />}
 
     </div>
   );

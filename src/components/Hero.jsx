@@ -15,6 +15,7 @@ export default function Hero({ content }) {
           loop 
           muted 
           playsInline 
+          poster="/assets/glass_bg.webp"
           className="absolute inset-0 w-full h-full object-cover hidden md:block opacity-[0.12]"
         >
           <source src="/assets/_Maintain_the_3D_hyper-realistic_crystalline_202605061839.mp4" type="video/mp4" />
@@ -24,6 +25,7 @@ export default function Hero({ content }) {
           loop 
           muted 
           playsInline 
+          poster="/assets/grid_bg.webp"
           className="absolute inset-0 w-full h-full object-cover md:hidden opacity-[0.12]"
         >
           <source src="/assets/Continue_with_pulsating_text_and_202605061853.mp4" type="video/mp4" />
@@ -49,11 +51,19 @@ export default function Hero({ content }) {
             </div>
           ) : (
             <picture>
-              <source media="(max-width: 768px)" srcSet="/assets/[IMAGE_END]__A_10-row_vertical_grid_202605060728.jpeg" />
+              {/* Mobile formats */}
+              <source media="(max-width: 768px)" srcSet="/assets/grid_bg.avif" type="image/avif" />
+              <source media="(max-width: 768px)" srcSet="/assets/grid_bg.webp" type="image/webp" />
+              <source media="(max-width: 768px)" srcSet="/assets/grid_bg.jpg" type="image/jpeg" />
+              {/* Desktop formats */}
+              <source srcSet="/assets/glass_bg.avif" type="image/avif" />
+              <source srcSet="/assets/glass_bg.webp" type="image/webp" />
               <img 
-                src="/assets/[IMAGE_END]__A_premium_4D_glass_202605052049.jpeg" 
+                src="/assets/glass_bg.jpg" 
                 alt="Nth Dimension Academy Monolith" 
                 className="w-full h-auto object-contain max-h-[480px] md:max-h-[600px] transition-transform duration-700 hover:scale-[1.01]"
+                fetchpriority="high"
+                decoding="async"
               />
             </picture>
           )}
