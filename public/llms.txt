@@ -1,0 +1,33 @@
+# Nth Dimension Academy
+
+> Nth Dimension Academy is the certification training practice of Navakanth Reddy Dumpa, a Microsoft Certified Trainer (MCT) and Master Consultant with 14+ years of enterprise experience. The academy delivers structured, certification-aligned training and real-world mentoring in the Microsoft Fabric and Azure data ecosystem, focused on Medallion Architecture, Microsoft Fabric, and Azure Databricks.
+
+## Who it's for
+
+Data engineers, analytics engineers, and BI/data professionals preparing for Microsoft data certification exams, and organizations that need enterprise-grade Fabric/Databricks enablement delivered by a Microsoft Certified Trainer.
+
+## What it offers
+
+- Instructor-led and self-paced exam prep for Microsoft Fabric and Azure Databricks certifications
+- "Learning Atlas" study resources per exam (structured syllabi, curriculum maps, and practice material)
+- Real-world project mentoring and Medallion Architecture design guidance
+- Corporate/enterprise Fabric and Databricks training engagements
+
+## Certifications covered
+
+- DP-600: Implementing Analytics Solutions Using Microsoft Fabric — /dp600-atlas/
+- DP-700: Implementing Data Engineering Solutions Using Microsoft Fabric — /dp700-atlas/
+- DP-750: Implementing Data Engineering Solutions Using Microsoft Azure Databricks — /dp750-atlas/
+- DP-800: Implementing a Microsoft Fabric Data Warehouse — /dp800-atlas/
+- AI-103: Azure AI Foundry — /ai103-atlas/
+
+## Key pages
+
+- Homepage: https://nthdimensionacademy.com/ — overview, instructor profile, curriculum map, and pricing
+- Learning Atlases: per-certification study hubs listed above
+
+## Contact
+
+- Email: mct@nthdimensionacademy.com
+- Instructor: Navakanth Reddy Dumpa, Microsoft Certified Trainer (MCT)
+- Location: Hyderabad, India
