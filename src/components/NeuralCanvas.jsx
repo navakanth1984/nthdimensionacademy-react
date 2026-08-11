@@ -28,7 +28,7 @@ const curriculumData = [
   },
   {
     id: 'DP-800',
-    title: 'Implementing a Data Science Solution on Azure',
+    title: 'Developing AI-Enabled Database Solutions',
     status: 'ACTIVE',
     level: 'Specialist Syllabus',
     modelUrl: '/assets/models/azure_core.glb'

@@ -245,75 +245,74 @@ const syllabusData = {
   },
   dp800: {
     trustPill: "DP-800 MASTER CURRICULUM",
-    title: "Implementing a Data Science Solution on Azure",
+    title: "Developing AI-Enabled Database Solutions",
     status: "active",
     statusText: "Active",
     exam: "Exam DP-800",
-    credential: "Microsoft Certified: Fabric Data Scientist Associate",
+    credential: "Microsoft Certified: SQL AI Developer Associate",
     level: "Specialist",
     cost: "$165 USD",
     weights: [
-      { topic: "Design & Prepare Data for ML", weight: "25–30%" },
-      { topic: "Build & Train ML Models", weight: "30–35%" },
-      { topic: "Manage & Deploy Models", weight: "20–25%" },
-      { topic: "Monitor & Optimize Solutions", weight: "15–20%" }
+      { topic: "Design & Develop Database Solutions", weight: "35–40%" },
+      { topic: "Secure, Optimize & Deploy Database Solutions", weight: "35–40%" },
+      { topic: "Implement AI Capabilities in Database Solutions", weight: "25–30%" }
     ],
     description: [
-      "Led by Master Consultant and Microsoft Certified Trainer (MCT) <strong>Navakanth Reddy Dumpa</strong>, this curriculum covers the full lifecycle of data science on Microsoft Fabric — from feature engineering and Spark-based ML training to MLflow experiment tracking and model deployment.",
-      "Designed for data scientists and ML engineers working in the Azure and Fabric ecosystem who want to operationalize machine learning at enterprise scale."
+      "Led by Master Consultant and Microsoft Certified Trainer (MCT) <strong>Navakanth Reddy Dumpa</strong>, this curriculum covers the full DP-800 blueprint — from advanced T-SQL, database objects, and CI/CD for SQL projects to embedding models, vector search, and retrieval-augmented generation (RAG) directly inside Azure SQL.",
+      "Designed for database developers and SQL engineers building AI-enabled applications who want to combine solid database fundamentals with modern AI capabilities natively in the database layer."
     ],
     tracks: [
       {
-        title: "📐 Track 1: Data Preparation & Feature Engineering",
-        desc: "Profile raw datasets, handle missing values, encode categorical features, and engineer training features using PySpark and pandas on Fabric."
+        title: "🗄️ Track 1: Database Objects & Advanced T-SQL",
+        desc: "Design specialized tables (JSON, graph, columnstore), constraints and sequences, views, functions, stored procedures, and advanced T-SQL — CTEs, window functions, JSON functions, and graph queries."
       },
       {
-        title: "🤖 Track 2: ML Model Training with Spark & MLflow",
-        desc: "Train Scikit-learn and Spark MLlib models in Fabric Notebooks, track experiments with MLflow, compare runs, and register champion models."
+        title: "🤖 Track 2: AI-Assisted SQL Development",
+        desc: "Use AI-assisted tools like GitHub Copilot and MCP servers to accelerate SQL development, while understanding the security implications of AI-assisted coding."
       },
       {
-        title: "🚀 Track 3: Model Deployment & Batch Scoring",
-        desc: "Deploy registered MLflow models, build batch inference pipelines using Data Factory, and score large datasets in OneLake."
+        title: "🔒 Track 3: Data Security & Compliance",
+        desc: "Implement encryption, dynamic data masking, row-level security, auditing, and secure endpoints for Azure SQL databases."
       },
       {
-        title: "📊 Track 4: Real-Time Inference & API Integration",
-        desc: "Configure real-time endpoints, integrate model predictions into Power BI reports, and build REST API wrappers for downstream consumption."
+        title: "⚡ Track 4: Performance & CI/CD",
+        desc: "Optimize database configurations, transaction isolation, and query performance; implement CI/CD for SQL Database Projects with testing, source control, and deployment pipelines."
       },
       {
-        title: "🔒 Track 5: Responsible AI & Governance",
-        desc: "Apply fairness assessments, configure model explainability with SHAP, register lineage in Purview, and enforce data governance policies."
+        title: "🧠 Track 5: Models, Embeddings & RAG",
+        desc: "Integrate external models and generate embeddings, implement full-text, vector, and hybrid search, and build retrieval-augmented generation (RAG) solutions directly on SQL data."
       }
     ],
     labs: [
       {
         num: "LAB 01",
-        title: "Exploratory Data Analysis on Fabric",
-        desc: "Load raw data into a Fabric Lakehouse, profile distributions, detect outliers, and visualize feature correlations using Spark notebooks."
+        title: "Specialized Tables & Indexing",
+        desc: "Design JSON, graph, and columnstore tables; choose the right index strategy for OLTP vs. analytical workloads in Azure SQL."
       },
       {
         num: "LAB 02",
-        title: "Feature Engineering & Data Preparation",
-        desc: "Impute missing values, encode categoricals, scale numeric features, and persist engineered datasets as Delta tables."
+        title: "Advanced T-SQL & Window Functions",
+        desc: "Write CTEs and window functions, query JSON and graph data, and build correlated queries with structured error handling."
       },
       {
         num: "LAB 03",
-        title: "Train & Track Models with MLflow",
-        desc: "Train classification and regression models, log parameters and metrics to MLflow, compare experiment runs, and register the best model."
+        title: "Securing Database Solutions",
+        desc: "Configure encryption, dynamic data masking, row-level security policies, and auditing across a multi-tenant database schema."
       },
       {
         num: "LAB 04",
-        title: "Hyperparameter Tuning with Spark",
-        desc: "Use Spark MLlib CrossValidator and ParamGridBuilder to tune model hyperparameters at scale across a distributed cluster."
+        title: "CI/CD for SQL Database Projects",
+        desc: "Build a SQL Database Project, wire it into source control and branching, and deploy it through an automated pipeline with tests."
       },
       {
         num: "LAB 05",
-        title: "Batch Inference Pipeline",
-        desc: "Build a Data Factory pipeline that loads the champion model and scores a new dataset in OneLake, writing predictions back as Delta tables."
+        title: "Vector Search & Embeddings",
+        desc: "Generate embeddings for text data, index them for vector search, and combine full-text and vector results with hybrid search (RRF)."
       },
       {
         num: "LAB 06",
-        title: "Model Explainability & Responsible AI",
-        desc: "Apply SHAP values to explain predictions, generate feature importance charts, and document model cards for governance compliance."
+        title: "Building a RAG Pipeline on SQL",
+        desc: "Chunk and embed source documents, store them in Azure SQL, and build a retrieval-augmented generation pipeline that grounds LLM answers in your data."
       }
     ]
   },

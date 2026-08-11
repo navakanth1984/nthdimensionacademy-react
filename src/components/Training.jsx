@@ -46,10 +46,10 @@ export default function Training({ onOpenSyllabus }) {
     {
       id: 'dp800',
       tag: 'DP-800 Masterclass',
-      title: 'Implementing a Data Science Solution on Azure',
+      title: 'Developing AI-Enabled Database Solutions',
       status: 'ACTIVE',
       level: 'Specialist',
-      desc: 'Build end-to-end data science solutions on Microsoft Fabric and Azure. Covers ML experimentation, model training with Spark, MLflow tracking, and deployment pipelines.',
+      desc: 'Design and implement AI-enabled database solutions on Azure SQL. Covers advanced T-SQL, database security, performance optimization, CI/CD, vector search, and RAG patterns.',
       icon: Server,
       color: '#a78bfa',
       bgColor: 'rgba(167, 139, 250, 0.08)',
