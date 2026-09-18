@@ -19,6 +19,7 @@ import MobileNav from './components/MobileNav';
 import AdvancedNotebookLMDashboard from './components/AdvancedNotebookLMDashboard';
 import ScrollProgress from './components/ScrollProgress';
 import EngagementHUD from './components/EngagementHUD';
+import CertificationMatcherModal from './components/CertificationMatcherModal';
 
 function App() {
   const glowRef = useRef(null);
@@ -45,6 +46,7 @@ function App() {
 
   // Atlas Iframe Overlay state
   const [atlasIframeUrl, setAtlasIframeUrl] = useState(null);
+  const [isMatcherOpen, setIsMatcherOpen] = useState(false);
 
   // HUD Visibility Check
   const [hudEnabled, setHudEnabled] = useState(false);
@@ -212,11 +214,15 @@ function App() {
       <div className="cursor-glow hidden md:block" ref={glowRef} />
 
       {/* Navbar Header */}
-      <Navbar onOpenPortal={() => setIsStudentPortalOpen(true)} onOpenAuth={() => setIsAuthOpen(true)} />
+      <Navbar 
+        onOpenPortal={() => setIsStudentPortalOpen(true)} 
+        onOpenAuth={() => setIsAuthOpen(true)} 
+        onOpenMatcher={() => setIsMatcherOpen(true)} 
+      />
 
       {/* Page Sections (Bind MongoDB text states if loaded) */}
       <div data-section="Academy Ascent">
-        <Hero content={contentData?.hero} />
+        <Hero content={contentData?.hero} onOpenMatcher={() => setIsMatcherOpen(true)} />
       </div>
       <div data-section="About MCT">
         <About content={contentData?.about} />
@@ -324,6 +330,12 @@ function App() {
 
       {/* Advanced Full-Screen Standalone Takeover */}
       {showAdvancedNLM && <AdvancedNotebookLMDashboard onClose={() => setShowAdvancedNLM(false)} />}
+
+      {/* 2-Minute Certification Matcher & Lead Capture Modal */}
+      <CertificationMatcherModal 
+        isOpen={isMatcherOpen}
+        onClose={() => setIsMatcherOpen(false)}
+      />
 
     </div>
   );

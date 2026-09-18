@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Navbar({ onOpenPortal, onOpenAuth }) {
+export default function Navbar({ onOpenPortal, onOpenAuth, onOpenMatcher }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -53,10 +53,10 @@ export default function Navbar({ onOpenPortal, onOpenAuth }) {
           </li>
           <li>
             <button 
-              disabled
-              className="px-4 py-1.5 rounded-full border border-gray-500 bg-gray-500/10 text-gray-400 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-not-allowed opacity-60"
+              onClick={onOpenMatcher}
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#ffd700]/40 bg-gradient-to-r from-[#ffd700]/20 to-[#00f0ff]/20 hover:from-[#ffd700]/30 hover:to-[#00f0ff]/30 text-[#ffd700] hover:text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(255,215,0,0.25)] hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 cursor-pointer"
             >
-              Sign In <span className="text-[10px] text-gray-500 ml-1">(Coming Soon)</span>
+              <span>Certification Matcher</span>
             </button>
           </li>
           <li>
