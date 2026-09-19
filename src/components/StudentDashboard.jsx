@@ -122,7 +122,7 @@ export default function StudentDashboard({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 overflow-y-auto">
       
       {/* Container Card */}
       <div className="relative w-full max-w-[1100px] h-[90vh] flex flex-col rounded-2xl border border-cosmic-gold/20 bg-[#060a13] shadow-[0_0_50px_rgba(255,215,0,0.15)] overflow-hidden animate-fadeIn">

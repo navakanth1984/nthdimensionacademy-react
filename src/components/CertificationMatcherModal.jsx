@@ -102,7 +102,7 @@ export default function CertificationMatcherModal({ isOpen, onClose }) {
   const whatsappUrl = `https://wa.me/916304980314?text=${whatsappMessage}`;
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto">
+    <div className="fixed inset-0 z-[10001] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto">
       <div className="relative w-full max-w-2xl bg-[#080d1a] border border-[#ffd700]/30 rounded-2xl p-6 md:p-8 shadow-[0_0_50px_rgba(0,240,255,0.2)] my-8">
         
         {/* Close Button */}
