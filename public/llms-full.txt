@@ -1,0 +1,76 @@
+# Nth Dimension Academy — Complete Machine-Readable Specification
+
+## Organization Authority
+- **Legal & Entity Name**: Nth Dimension Academy
+- **Founder & Chief Architect**: Navakanth Reddy Dumpa
+- **Professional Accreditations**: Microsoft Certified Trainer (MCT), Senior Enterprise Data Architect
+- **Primary Domain**: https://nthdimensionacademy.com/
+- **Contact Email**: mct@nthdimensionacademy.com
+- **Contact Phone**: +91 6304980314
+- **Headquarters**: Hyderabad, Telangana, India
+- **Social & Media**:
+  - YouTube: https://www.youtube.com/@nthdimensionacademy
+  - Instagram: https://instagram.com/nthdimensionacademy
+
+## Mission & Educational Philosophy
+Nth Dimension Academy bridges the gap between theoretical cloud certifications and high-scale enterprise production. Founded by an active Microsoft Certified Trainer with 14+ years designing multi-terabyte data solutions for Fortune 500 enterprises, the curriculum employs interactive 3D concept modeling, hands-on labs, and real-world medallion architecture patterns.
+
+## Comprehensive Certification Programs
+
+### 1. DP-600: Implementing Analytics Solutions Using Microsoft Fabric
+- **Target Role**: Fabric Analytics Engineer, BI Architect, Data Analyst
+- **URL**: https://nthdimensionacademy.com/dp600-atlas/
+- **Core Competencies**:
+  - Plan, implement, and manage an analytics environment
+  - Ingest and transform data with Dataflows Gen2 and Notebooks
+  - Implement and manage semantic models and DAX calculations
+  - Query and analyze data with Lakehouse SQL Analytics Endpoints and Power BI Direct Lake
+- **Prerequisites**: Fundamental SQL, basic Power BI reporting, and cloud concepts
+
+### 2. DP-700: Implementing Data Engineering Solutions Using Microsoft Fabric
+- **Target Role**: Fabric Data Engineer, Cloud Platform Engineer
+- **URL**: https://nthdimensionacademy.com/dp700-atlas/
+- **Core Competencies**:
+  - Design and implement lakehouse storage and Delta Lake tables
+  - Ingest batch and streaming data using Spark and Copy Activities
+  - Build robust data pipelines with Data Factory and Apache Spark
+  - Configure governance, workspace security, and capacity optimization
+- **Prerequisites**: Intermediate SQL and Python/PySpark fundamentals
+
+### 3. DP-750: Implementing Data Engineering Solutions Using Microsoft Azure Databricks
+- **Target Role**: Databricks Data Engineer, Lakehouse Platform Engineer
+- **URL**: https://nthdimensionacademy.com/dp750-atlas/
+- **Core Competencies**:
+  - Architect Azure Databricks workspaces and Unity Catalog governance
+  - Build streaming and batch ETL pipelines using Delta Live Tables (DLT)
+  - Optimize PySpark jobs, memory caching, and shuffle partitioning
+  - Secure data assets with fine-grained access control and lineage tracking
+- **Prerequisites**: Solid PySpark or Scala experience and Azure storage concepts
+
+### 4. DP-800: Implementing a Microsoft Fabric Data Warehouse
+- **Target Role**: Data Warehouse Architect, Enterprise Analytics Engineer
+- **URL**: https://nthdimensionacademy.com/dp800-atlas/
+- **Core Competencies**:
+  - Architect and deploy scalable Fabric Data Warehouses
+  - Write high-performance T-SQL queries and stored procedures
+  - Implement dimensional modeling (star schema, snowflake, SCD Type 1/2)
+  - Migrate legacy Synapse Dedicated SQL Pools and on-prem SQL Server to Fabric
+- **Prerequisites**: Advanced T-SQL and dimensional modeling concepts
+
+### 5. AI-103: Azure AI Foundry & Generative AI Solutions
+- **Target Role**: AI Engineer, Applied Generative AI Specialist
+- **URL**: https://nthdimensionacademy.com/ai103-atlas/
+- **Core Competencies**:
+  - Build RAG (Retrieval-Augmented Generation) applications with Azure AI Foundry
+  - Fine-tune and deploy frontier models on Azure AI Studio
+  - Implement AI agent evaluation, prompt shields, and content safety filters
+  - Integrate vector databases and semantic search
+- **Prerequisites**: Python proficiency and REST API integration basics
+
+## Trust Anchors & Verification
+- **About Nth Dimension Academy**: https://nthdimensionacademy.com/about/
+- **Contact Channels**: https://nthdimensionacademy.com/contact/
+- **Privacy Policy**: https://nthdimensionacademy.com/privacy/
+- **Terms of Service**: https://nthdimensionacademy.com/terms/
+- **XML Sitemap**: https://nthdimensionacademy.com/sitemap.xml
+- **Robots Directives**: https://nthdimensionacademy.com/robots.txt

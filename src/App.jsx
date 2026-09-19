@@ -19,6 +19,7 @@ import MobileNav from './components/MobileNav';
 import AdvancedNotebookLMDashboard from './components/AdvancedNotebookLMDashboard';
 import ScrollProgress from './components/ScrollProgress';
 import EngagementHUD from './components/EngagementHUD';
+import CertificationMatcherModal from './components/CertificationMatcherModal';
 
 function App() {
   const glowRef = useRef(null);
@@ -45,6 +46,7 @@ function App() {
 
   // Atlas Iframe Overlay state
   const [atlasIframeUrl, setAtlasIframeUrl] = useState(null);
+  const [isMatcherOpen, setIsMatcherOpen] = useState(false);
 
   // HUD Visibility Check
   const [hudEnabled, setHudEnabled] = useState(false);
@@ -114,6 +116,11 @@ function App() {
         setIsAuthOpen(true);
       } else if (event.data?.type === 'OPEN_PORTAL') {
         setIsStudentPortalOpen(true);
+      } else if (event.data?.type === 'OPEN_MATCHER') {
+        setIsMatcherOpen(true);
+      } else if (event.data?.type === 'CLOSE_ATLAS') {
+        setAtlasIframeUrl(null);
+        if (window.resetNeuralCanvas) window.resetNeuralCanvas();
       }
     };
     window.addEventListener('message', handleMessage);
@@ -212,11 +219,15 @@ function App() {
       <div className="cursor-glow hidden md:block" ref={glowRef} />
 
       {/* Navbar Header */}
-      <Navbar onOpenPortal={() => setIsStudentPortalOpen(true)} onOpenAuth={() => setIsAuthOpen(true)} />
+      <Navbar 
+        onOpenPortal={() => setIsStudentPortalOpen(true)} 
+        onOpenAuth={() => setIsAuthOpen(true)} 
+        onOpenMatcher={() => setIsMatcherOpen(true)} 
+      />
 
       {/* Page Sections (Bind MongoDB text states if loaded) */}
       <div data-section="Academy Ascent">
-        <Hero content={contentData?.hero} />
+        <Hero content={contentData?.hero} onOpenMatcher={() => setIsMatcherOpen(true)} />
       </div>
       <div data-section="About MCT">
         <About content={contentData?.about} />
@@ -276,6 +287,7 @@ function App() {
         setIsOpen={setIsAssistantOpen} 
         triggerQuery={triggerQuery}
         setTriggerQuery={setTriggerQuery}
+        onOpenMatcher={() => setIsMatcherOpen(true)}
       />
 
       {/* Hidden Slide-in CMS Console Dashboard */}
@@ -302,10 +314,53 @@ function App() {
 
       {/* Atlas Iframe Overlay - Keeps subdirectories in the same main web page */}
       {atlasIframeUrl && (
-        <div className="fixed inset-0 z-[9999] bg-[#070913] animate-fade-in">
+        <div className="fixed inset-0 z-[9999] bg-[#070913] animate-fade-in flex flex-col">
+          {/* Top Control Bar for Atlas Viewport */}
+          <div className="h-12 bg-[#080d1a]/95 backdrop-blur-md border-b border-white/10 px-4 flex items-center justify-between z-10 shrink-0">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => {
+                  setAtlasIframeUrl(null);
+                  if (window.resetNeuralCanvas) window.resetNeuralCanvas();
+                }}
+                className="flex items-center gap-2 text-xs font-semibold text-gray-300 hover:text-white px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
+              >
+                ← Return to Academy Portal
+              </button>
+              <span className="hidden md:inline-block text-xs font-medium text-cyan-400/80 uppercase tracking-widest border-l border-white/10 pl-3">
+                Interactive Learning Atlas
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setIsMatcherOpen(true)}
+                className="flex items-center gap-1.5 text-xs font-bold text-black bg-gradient-to-r from-hyper-drive-blue to-cyan-300 hover:opacity-90 px-3 py-1.5 rounded-lg shadow-[0_0_15px_rgba(0,240,255,0.4)] transition cursor-pointer"
+              >
+                🎯 2-Min Exam Matcher
+              </button>
+              <a
+                href="https://wa.me/916304980314?text=Hi%20Navakanth%20Sir%2C%20I%20am%20exploring%20the%20Learning%20Atlas%20on%20Nth%20Dimension%20Academy%20and%20would%20like%20to%20know%20more%20about%20upcoming%20batches%20and%201-on-1%20mentorship."
+                target="_blank"
+                rel="noopener"
+                className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition"
+              >
+                💬 WhatsApp MCT
+              </a>
+              <button
+                onClick={() => {
+                  setAtlasIframeUrl(null);
+                  if (window.resetNeuralCanvas) window.resetNeuralCanvas();
+                }}
+                className="text-gray-400 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition cursor-pointer"
+                title="Close Atlas Overlay"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
           <iframe
             src={atlasIframeUrl}
-            className="w-full h-full border-none"
+            className="w-full flex-1 border-none"
             title="Atlas Visualisation"
             onLoad={(e) => {
               try {
@@ -324,6 +379,12 @@ function App() {
 
       {/* Advanced Full-Screen Standalone Takeover */}
       {showAdvancedNLM && <AdvancedNotebookLMDashboard onClose={() => setShowAdvancedNLM(false)} />}
+
+      {/* 2-Minute Certification Matcher & Lead Capture Modal */}
+      <CertificationMatcherModal 
+        isOpen={isMatcherOpen}
+        onClose={() => setIsMatcherOpen(false)}
+      />
 
     </div>
   );
