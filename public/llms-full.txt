@@ -1,0 +1,146 @@
+# Nth Dimension Academy — Complete Machine-Readable Specification
+
+## Organization Authority
+- **Legal & Entity Name**: Nth Dimension Academy
+- **Founder & Chief Architect**: Navakanth Reddy Dumpa
+- **Professional Accreditations**: Microsoft Certified Trainer (MCT), Senior Enterprise Data Architect
+- **Primary Domain**: https://nthdimensionacademy.com/
+- **Contact Email**: mct@nthdimensionacademy.com
+- **Contact Phone**: +91 6304980314
+- **Headquarters**: Hyderabad, Telangana, India
+- **Social & Media**:
+  - YouTube: https://www.youtube.com/@nthdimensionacademy
+  - Instagram: https://instagram.com/nthdimensionacademy
+
+## Mission & Educational Philosophy
+Nth Dimension Academy bridges the gap between theoretical cloud certifications and high-scale enterprise production. Founded by an active Microsoft Certified Trainer with 14+ years designing multi-terabyte data solutions for Fortune 500 enterprises, the curriculum employs interactive 3D concept modeling, hands-on labs, and real-world medallion architecture patterns.
+
+---
+
+## Comprehensive Certification Programs & Timelines
+
+### 1. DP-700: Implementing Data Engineering Solutions Using Microsoft Fabric (Flagship Masterclass)
+- **Target Role**: Fabric Data Engineer, Cloud Platform Engineer, Big Data Architect
+- **Credential**: Microsoft Certified: Fabric Data Engineer Associate (Exam DP-700)
+- **Duration**: **35 Days** (7 Calendar Weeks)
+- **Total Hours**: **70 Total Hours** (35h Live Lectures + 35h Hands-on Sandbox Labs)
+- **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
+- **URL**: https://nthdimensionacademy.com/dp700-atlas/
+- **Core Competencies**:
+  - Plan, implement, and manage an enterprise analytics environment (30–35%)
+  - Ingest, clean, and transform data using PySpark and Data Factory pipelines (30–35%)
+  - Monitor, secure, and optimize storage, capacity, and query performance (30–35%)
+- **Timeline Progression**:
+  - Week 1 (Days 1–5): Tenant, Workspace Administration, OneLake Shortcuts & Security Governance (LAB 01)
+  - Week 2 (Days 6–10): Lakehouse Architecture, Delta Parquet Internals & Medallion Strategy (LAB 02)
+  - Week 3 (Days 11–15): High-Scale Ingestion, Dataflows Gen2 & Zero-ETL Database Mirroring (LAB 03 & 04)
+  - Week 4 (Days 16–20): Advanced PySpark Distributed Transformations & Spark Optimization (LAB 05)
+  - Week 5 (Days 21–25): Delta Lake Performance Tuning (OPTIMIZE, Z-ORDER, VACUUM) & Time Travel (LAB 06)
+  - Week 6 (Days 26–30): Synapse Data Warehouse Engineering & Real-Time Eventstream/KQL Analytics (LAB 07)
+  - Week 7 (Days 31–35): Azure DevOps CI/CD Git Release Pipelines, Purview Lineage & DP-700 Exam Marathon (LAB 08)
+
+### 2. DP-600: Implementing Analytics Solutions Using Microsoft Fabric
+- **Target Role**: Fabric Analytics Engineer, BI Architect, Power BI Specialist
+- **Credential**: Microsoft Certified: Fabric Analytics Engineer Associate (Exam DP-600)
+- **Duration**: **30 Days** (6 Calendar Weeks)
+- **Total Hours**: **60 Total Hours** (30h Live Lectures + 30h Hands-on Sandbox Labs)
+- **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
+- **URL**: https://nthdimensionacademy.com/dp600-atlas/
+- **Core Competencies**:
+  - Plan, implement, and manage an analytics environment (10–15%)
+  - Prepare and serve data via Dataflows Gen2 and SQL Analytics Endpoints (40–45%)
+  - Implement and manage semantic models and advanced DAX calculations (25–30%)
+  - Explore and analyze data using Power BI Direct Lake mode (20–25%)
+- **Timeline Progression**:
+  - Week 1 (Days 1–5): Analytics Environment, Workspace Permissions & OneLake Architecture (LAB 01)
+  - Week 2 (Days 6–10): Data Preparation, Cleansing with Dataflows Gen2 & Dimension Staging (LAB 02)
+  - Week 3 (Days 11–15): T-SQL Analytics on Lakehouses, SQL Endpoints & Notebook Transformations (LAB 03)
+  - Week 4 (Days 16–20): Enterprise Semantic Modeling, Star Schema & Advanced DAX Calculations (LAB 04)
+  - Week 5 (Days 21–25): Power BI Direct Lake Zero-Copy Mode & DAX Performance Optimization (LAB 05)
+  - Week 6 (Days 26–30): PBIP Git Source Control, Purview Data Governance & DP-600 Mock Exam (LAB 06)
+
+### 3. DP-750: Implementing Data Engineering Solutions Using Microsoft Azure Databricks
+- **Target Role**: Databricks Data Engineer, Lakehouse Platform Engineer
+- **Credential**: Microsoft Certified: Azure Databricks Data Engineer (Exam DP-750)
+- **Duration**: **30 Days** (6 Calendar Weeks)
+- **Total Hours**: **60 Total Hours** (30h Live Lectures + 30h Hands-on Labs)
+- **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
+- **URL**: https://nthdimensionacademy.com/dp750-atlas/
+- **Core Competencies**:
+  - Architect Azure Databricks workspaces and Unity Catalog governance (30–35%)
+  - Build streaming and batch ETL pipelines using Delta Live Tables (25–30%)
+  - Optimize PySpark jobs, memory caching, Liquid Clustering, and shuffle partitions (20–25%)
+  - Secure data assets with fine-grained access control, column masking & lineage (15–20%)
+- **Timeline Progression**:
+  - Week 1 (Days 1–5): Databricks Workspaces & Unity Catalog 3-Level Namespace Architecture (LAB 01)
+  - Week 2 (Days 6–10): Delta Lake Internals, ACID Logging & Bronze-to-Gold Architecture (LAB 02)
+  - Week 3 (Days 11–15): Delta Live Tables (DLT) Declarative Pipelines & Auto Loader Ingestion (LAB 03)
+  - Week 4 (Days 16–20): PySpark Tuning, Photon Engine, Shuffle Elimination & Liquid Clustering (LAB 04)
+  - Week 5 (Days 21–25): Dynamic Column Masking, Row-Level Security & Purview Catalog Integration (LAB 05)
+  - Week 6 (Days 26–30): Databricks Asset Bundles (DABs), CI/CD Production Workflows & DP-750 Exam Drills (LAB 06)
+
+### 4. DP-800: Implementing a Microsoft Fabric Data Warehouse
+- **Target Role**: Data Warehouse Architect, Enterprise Analytics Engineer, SQL Specialist
+- **Credential**: Microsoft Certified: Fabric Data Warehouse Specialist (Exam DP-800)
+- **Duration**: **25 Days** (5 Calendar Weeks)
+- **Total Hours**: **50 Total Hours** (25h Live Lectures + 25h Practical Labs)
+- **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
+- **URL**: https://nthdimensionacademy.com/dp800-atlas/
+- **Core Competencies**:
+  - Architect and deploy scalable Fabric Data Warehouses (25–30%)
+  - Write high-performance T-SQL queries, stored procedures, and transactions (30–35%)
+  - Implement dimensional modeling (Star/Snowflake, SCD Type 1 & 2) (20–25%)
+  - Migrate legacy Synapse Dedicated SQL Pools and on-prem SQL Server to Fabric (15–20%)
+- **Timeline Progression**:
+  - Week 1 (Days 1–5): Fabric Synapse Warehouse Architecture & Decoupled Storage Provisioning (LAB 01)
+  - Week 2 (Days 6–10): Dimensional Modeling & Slowly Changing Dimensions (SCD 1/2) with T-SQL (LAB 02)
+  - Week 3 (Days 11–15): High-Performance T-SQL Stored Procedures & OneLake Delta Compaction (LAB 03)
+  - Week 4 (Days 16–20): Legacy Synapse Dedicated SQL Pool Migration & CTAS Conversion (LAB 04)
+  - Week 5 (Days 21–25): Query Insights DMVs, Security (RLS/CLS/OLS) & DP-800 Exam Marathon (LAB 05)
+
+### 5. AI-103: Azure AI Foundry & Generative AI Solutions
+- **Target Role**: AI Engineer, Applied Generative AI Specialist, LLM Solutions Architect
+- **Credential**: Azure AI Engineer Associate (Exam AI-103)
+- **Duration**: **25 Days** (5 Calendar Weeks)
+- **Total Hours**: **50 Total Hours** (25h Live Lectures + 25h Applied Labs)
+- **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
+- **URL**: https://nthdimensionacademy.com/ai103-atlas/
+- **Core Competencies**:
+  - Plan and manage Azure AI solutions & model catalog deployments (15–20%)
+  - Implement prompt engineering, few-shot patterns, and safety guardrails (25–30%)
+  - Build enterprise RAG (Retrieval-Augmented Generation) applications with Azure AI Search (30–35%)
+  - Evaluate, secure, and monitor AI agent workflows with OpenTelemetry (20–25%)
+- **Timeline Progression**:
+  - Week 1 (Days 1–5): Azure AI Foundry Hubs, Projects & Frontier Model Deployment (LAB 01)
+  - Week 2 (Days 6–10): Advanced Prompt Engineering, System Prompts & Azure Content Safety (LAB 02)
+  - Week 3 (Days 11–15): Enterprise RAG Architecture, Vector Embeddings & Hybrid Search (LAB 03)
+  - Week 4 (Days 16–20): Multi-Agent Collaboration with AutoGen & Semantic Kernel Orchestration (LAB 04)
+  - Week 5 (Days 21–25): LLM Evaluation (Groundedness/Relevance), Tracing & AI-103 Practice Assessment (LAB 05)
+
+### 6. DP-900: Azure Data Fundamentals (Foundational Fast-Track)
+- **Target Role**: Cloud Data Beginners, Junior Engineers, IT Leaders
+- **Credential**: Microsoft Certified: Azure Data Fundamentals (Exam DP-900)
+- **Duration**: **10 Days** (2 Calendar Weeks)
+- **Total Hours**: **20 Total Hours** (10h Live Lectures + 10h Interactive Labs)
+- **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) Fast-Track
+- **URL**: https://nthdimensionacademy.com/
+- **Timeline Progression**:
+  - Week 1 (Days 1–5): Core Cloud Data Concepts, Relational Data Services on Azure (Azure SQL, PostgreSQL) (LAB 01)
+  - Week 2 (Days 6–10): Non-Relational Storage Models (Blob, ADLS Gen2, Cosmos DB), Modern Analytics Workloads & Practice Assessment (LAB 02 & 03)
+
+### 7. DP-203: Azure Data Engineering (Legacy Reference Archive)
+- **Target Role**: Enterprise Migration Engineers (Historical Reference)
+- **Credential**: Microsoft Certified: Azure Data Engineer Associate (Exam DP-203 — Retired)
+- **Duration**: **40 Days** (Self-Paced Reference Archive)
+- **Total Hours**: **80 Hours**
+- **Purpose**: Reference guides and video archives for migrating legacy Azure Synapse and Data Factory workloads to Microsoft Fabric.
+
+---
+
+## Trust Anchors & Verification
+- **About Nth Dimension Academy**: https://nthdimensionacademy.com/about/
+- **Contact Channels**: https://nthdimensionacademy.com/contact/
+- **Privacy Policy**: https://nthdimensionacademy.com/privacy/
+- **Terms of Service**: https://nthdimensionacademy.com/terms/
+- **XML Sitemap**: https://nthdimensionacademy.com/sitemap.xml
+- **Robots Directives**: https://nthdimensionacademy.com/robots.txt

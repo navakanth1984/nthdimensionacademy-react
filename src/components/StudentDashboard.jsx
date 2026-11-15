@@ -136,7 +136,7 @@ export default function StudentDashboard({ isOpen, onClose }) {
             <div>
               <h2 className="text-lg font-bold text-cosmic-gold uppercase tracking-wider">Student Portal</h2>
               <p className="text-xs text-slate-400 font-light">
-                Welcome back, <span className="text-[#00f0ff] font-medium">Data Engineer</span> | Microsoft Fabric DP-700 Cohort
+                Welcome back, <span className="text-[#00f0ff] font-medium">Data Engineer</span> | Microsoft Fabric DP-700 Cohort (35 Days · 7 Weeks · 70 Hrs)
               </p>
             </div>
           </div>

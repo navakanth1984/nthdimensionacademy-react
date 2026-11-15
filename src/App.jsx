@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { X, ExternalLink } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -108,12 +109,30 @@ function App() {
     setIsSyllabusOpen(true);
   };
 
+  const handleCloseAtlas = () => {
+    setAtlasIframeUrl(null);
+    if (window.resetNeuralCanvas) window.resetNeuralCanvas();
+  };
+
+  useEffect(() => {
+    if (!atlasIframeUrl) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        handleCloseAtlas();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [atlasIframeUrl]);
+
   useEffect(() => {
     const handleMessage = (event) => {
       if (event.data?.type === 'OPEN_AUTH') {
         setIsAuthOpen(true);
       } else if (event.data?.type === 'OPEN_PORTAL') {
         setIsStudentPortalOpen(true);
+      } else if (event.data?.type === 'CLOSE_ATLAS') {
+        handleCloseAtlas();
       }
     };
     window.addEventListener('message', handleMessage);
@@ -122,21 +141,25 @@ function App() {
 
   useEffect(() => {
     window.handleNodeClick = (courseId) => {
-      // Provide exactly the same system as the live website for atlas links
-      if (courseId === 'DP-700') {
+      const normalized = (courseId || '').toLowerCase().replace('-', '');
+      if (normalized === 'dp700') {
         setAtlasIframeUrl('/dp700-atlas/index.html');
         return;
       }
-      if (courseId === 'DP-600') {
+      if (normalized === 'dp600') {
         setAtlasIframeUrl('/dp600-atlas/index.html');
         return;
       }
-      if (courseId === 'DP-750') {
+      if (normalized === 'dp750') {
         setAtlasIframeUrl('/dp750-atlas/index.html');
         return;
       }
-      if (courseId === 'DP-800') {
+      if (normalized === 'dp800') {
         setAtlasIframeUrl('/dp800-atlas/index.html');
+        return;
+      }
+      if (normalized === 'ai103') {
+        setAtlasIframeUrl('/ai103-atlas/index.html');
         return;
       }
 
@@ -152,21 +175,27 @@ function App() {
   const handleBeginAscent = (courseId) => {
     setIsSyllabusOpen(false);
 
+    const normalized = (courseId || '').toLowerCase().replace('-', '');
+
     // Unify with live website: Open the immersive Atlas directly
-    if (courseId === 'dp700') {
+    if (normalized === 'dp700') {
       setAtlasIframeUrl('/dp700-atlas/index.html');
       return;
     }
-    if (courseId === 'dp600') {
+    if (normalized === 'dp600') {
       setAtlasIframeUrl('/dp600-atlas/index.html');
       return;
     }
-    if (courseId === 'dp750') {
+    if (normalized === 'dp750') {
       setAtlasIframeUrl('/dp750-atlas/index.html');
       return;
     }
-    if (courseId === 'dp800') {
+    if (normalized === 'dp800') {
       setAtlasIframeUrl('/dp800-atlas/index.html');
+      return;
+    }
+    if (normalized === 'ai103') {
+      setAtlasIframeUrl('/ai103-atlas/index.html');
       return;
     }
 
@@ -175,18 +204,15 @@ function App() {
     let userText = '';
     let apiPrompt = '';
 
-    if (courseId === 'dp900') {
+    if (normalized === 'dp900') {
       userText = 'Begin DP-900 Ascent';
       apiPrompt = "Let's begin the DP-900 Azure Data Fundamentals Ascent! Explain the core difference between relational and non-relational databases on Azure.";
-    } else if (courseId === 'dp600') {
-      userText = 'Begin DP-600 Ascent';
-      apiPrompt = "Let's begin the DP-600 Microsoft Fabric Analytics Engineer Ascent! Tell me about Lab 01.";
-    } else if (courseId === 'dp203') {
+    } else if (normalized === 'dp203') {
       userText = 'Begin DP-203 Ascent';
       apiPrompt = "Let's begin the DP-203 Azure Data Engineering Ascent! Tell me about Lab 01.";
     } else {
-      userText = 'Begin DP-700 Ascent';
-      apiPrompt = "Let's begin the DP-700 Microsoft Fabric Data Engineer Ascent! Tell me about Lab 01.";
+      userText = `Begin ${courseId ? courseId.toUpperCase() : 'Ascent'}`;
+      apiPrompt = `Let's begin the ${courseId ? courseId.toUpperCase() : 'Nth Dimension'} Ascent! Tell me about its core curriculum and labs.`;
     }
 
     setTriggerQuery({ userText, apiPrompt });
@@ -228,7 +254,7 @@ function App() {
         <CurriculumMap />
       </div>
       <div data-section="Training Pathways">
-        <Training onOpenSyllabus={handleOpenSyllabus} />
+        <Training onOpenSyllabus={handleOpenSyllabus} onOpenAtlas={handleBeginAscent} />
       </div>
       
       {/* Launch Advanced UI Button */}
@@ -302,20 +328,44 @@ function App() {
 
       {/* Atlas Iframe Overlay - Keeps subdirectories in the same main web page */}
       {atlasIframeUrl && (
-        <div className="fixed inset-0 z-[9999] bg-[#070913] animate-fade-in">
+        <div className="fixed inset-0 z-[9999] bg-[#070913] flex flex-col animate-fade-in">
+          {/* Floating Controls Header */}
+          <div className="absolute top-4 right-4 z-50 flex items-center gap-3">
+            <a
+              href={atlasIframeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-white/10 text-xs font-semibold backdrop-blur-md transition-all shadow-lg hover:border-hyper-drive-blue cursor-pointer"
+              title="Open in New Tab"
+            >
+              <span>Open in New Tab</span>
+              <ExternalLink className="h-3.5 w-3.5 text-hyper-drive-blue" />
+            </a>
+            <button
+              onClick={handleCloseAtlas}
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-hyper-drive-blue to-cosmic-gold hover:opacity-95 text-black font-bold text-xs uppercase tracking-wider backdrop-blur-md transition-all shadow-lg hover:shadow-[0_0_15px_rgba(255,215,0,0.4)] cursor-pointer"
+              title="Return to Academy (Esc)"
+            >
+              <span>← Return to Academy</span>
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+
           <iframe
             src={atlasIframeUrl}
             className="w-full h-full border-none"
             title="Atlas Visualisation"
             onLoad={(e) => {
               try {
-                const href = e.target.contentWindow.location.href;
+                const href = e.target?.contentWindow?.location?.href;
+                // Guard: Do not close on initial uninitialized/blank state
+                if (!href || href === 'about:blank') return;
+                // If navigated away from atlas (e.g. Return to Portal clicked)
                 if (!href.includes('-atlas/')) {
-                  setAtlasIframeUrl(null);
-                  if (window.resetNeuralCanvas) window.resetNeuralCanvas();
+                  handleCloseAtlas();
                 }
               } catch (_) {
-                // cross-origin — ignore
+                // cross-origin security restriction — safe to ignore
               }
             }}
           />

@@ -1,8 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitBranch, BarChart3, Database, Compass, ArrowUpRight, BrainCircuit, Server } from 'lucide-react';
+import { GitBranch, BarChart3, Database, Compass, ArrowUpRight, BrainCircuit, Server, Clock, Sparkles } from 'lucide-react';
 
-export default function Training({ onOpenSyllabus }) {
+const courseAtlasMap = {
+  dp700: '/dp700-atlas/index.html',
+  dp600: '/dp600-atlas/index.html',
+  dp750: '/dp750-atlas/index.html',
+  dp800: '/dp800-atlas/index.html',
+  ai103: '/ai103-atlas/index.html'
+};
+
+export default function Training({ onOpenSyllabus, onOpenAtlas }) {
   const courses = [
     {
       id: 'dp700',
@@ -10,6 +18,10 @@ export default function Training({ onOpenSyllabus }) {
       title: 'Microsoft Fabric Data Engineer',
       status: 'ACTIVE',
       level: 'Elite Master',
+      durationDays: '35 Days',
+      durationWeeks: '7 Weeks',
+      totalHours: '70 Hours (35h Lecture + 35h Lab)',
+      schedule: 'Mon–Fri (2h/day) or Weekend Batch',
       desc: 'Master the end-to-end data engineering lifecycle in Fabric, from OneLake management and Medallion architecture to real-time analytics and Spark optimization.',
       icon: GitBranch,
       color: '#00f0ff',
@@ -23,6 +35,10 @@ export default function Training({ onOpenSyllabus }) {
       title: 'Implementing Analytics Solutions',
       status: 'ACTIVE',
       level: 'Specialist',
+      durationDays: '30 Days',
+      durationWeeks: '6 Weeks',
+      totalHours: '60 Hours (30h Lecture + 30h Lab)',
+      schedule: 'Mon–Fri (2h/day) or Weekend Batch',
       desc: 'Conducted high-impact training for global squads. Covers Fabric Analytics, Lakehouses, Notebooks, and Power BI enterprise integration for modern ETL squads.',
       icon: BarChart3,
       color: '#8a2be2',
@@ -36,6 +52,10 @@ export default function Training({ onOpenSyllabus }) {
       title: 'Implement a Lakehouse with Microsoft Fabric',
       status: 'ACTIVE',
       level: 'Specialist',
+      durationDays: '30 Days',
+      durationWeeks: '6 Weeks',
+      totalHours: '60 Hours (30h Lecture + 30h Lab)',
+      schedule: 'Mon–Fri (2h/day) or Weekend Batch',
       desc: 'Design and implement a full lakehouse solution using Microsoft Fabric. Covers data ingestion, Delta Lake storage, Spark transformations, and semantic model integration.',
       icon: BrainCircuit,
       color: '#22d3ee',
@@ -49,6 +69,10 @@ export default function Training({ onOpenSyllabus }) {
       title: 'Implementing a Data Science Solution on Azure',
       status: 'ACTIVE',
       level: 'Specialist',
+      durationDays: '25 Days',
+      durationWeeks: '5 Weeks',
+      totalHours: '50 Hours (25h Lecture + 25h Lab)',
+      schedule: 'Mon–Fri (2h/day) or Weekend Batch',
       desc: 'Build end-to-end data science solutions on Microsoft Fabric and Azure. Covers ML experimentation, model training with Spark, MLflow tracking, and deployment pipelines.',
       icon: Server,
       color: '#a78bfa',
@@ -57,30 +81,55 @@ export default function Training({ onOpenSyllabus }) {
       levelText: 'Level: Specialist',
     },
     {
-      id: 'dp203',
-      tag: 'DP-203 Masterclass',
-      title: 'Azure Data Engineering',
-      status: 'RETIRED',
-      level: 'Legacy Core',
-      desc: 'Scalable cloud pipelines, PySpark execution, Delta Lakes, and Medallion architecture deployments inside Synapse, Databricks, and Data Factory.',
-      icon: Database,
-      color: '#ef4444',
-      bgColor: 'rgba(239, 68, 68, 0.08)',
-      borderColor: 'rgba(239, 68, 68, 0.25)',
-      levelText: 'Level: Legacy Core',
+      id: 'ai103',
+      tag: 'AI-103 Masterclass',
+      title: 'Azure AI Foundry & Generative AI',
+      status: 'ACTIVE',
+      level: 'Specialist',
+      durationDays: '25 Days',
+      durationWeeks: '5 Weeks',
+      totalHours: '50 Hours (25h Lecture + 25h Lab)',
+      schedule: 'Mon–Fri (2h/day) or Weekend Batch',
+      desc: 'Architect enterprise RAG applications, deploy and evaluate frontier models on Azure AI Studio, and build autonomous multi-agent systems with content safety guardrails.',
+      icon: Sparkles,
+      color: '#ec4899',
+      bgColor: 'rgba(236, 72, 153, 0.08)',
+      borderColor: 'rgba(236, 72, 153, 0.25)',
+      levelText: 'Level: Specialist',
     },
     {
       id: 'dp900',
       tag: 'DP-900 Masterclass',
       title: 'Azure Data Fundamentals',
-      status: 'COMING SOON',
+      status: 'ACTIVE',
       level: 'Foundation',
+      durationDays: '10 Days',
+      durationWeeks: '2 Weeks',
+      totalHours: '20 Hours (10h Lecture + 10h Lab)',
+      schedule: 'Mon–Fri (2h/day) Fast-Track',
       desc: 'Master the foundational concepts of cloud data services, relational & non-relational database models, and modern analytics workloads on Azure.',
       icon: Compass,
       color: '#ffd700',
       bgColor: 'rgba(255, 215, 0, 0.08)',
       borderColor: 'rgba(255, 215, 0, 0.25)',
       levelText: 'Level: Foundation',
+    },
+    {
+      id: 'dp203',
+      tag: 'DP-203 Masterclass',
+      title: 'Azure Data Engineering (Legacy)',
+      status: 'RETIRED',
+      level: 'Legacy Core',
+      durationDays: '40 Days',
+      durationWeeks: 'Self-Paced',
+      totalHours: '80 Hours (Curated Archive)',
+      schedule: 'On-Demand Historical Reference',
+      desc: 'Scalable cloud pipelines, PySpark execution, Delta Lakes, and Medallion architecture deployments inside Synapse, Databricks, and Data Factory.',
+      icon: Database,
+      color: '#ef4444',
+      bgColor: 'rgba(239, 68, 68, 0.08)',
+      borderColor: 'rgba(239, 68, 68, 0.25)',
+      levelText: 'Level: Legacy Core',
     },
   ];
 
@@ -146,9 +195,20 @@ export default function Training({ onOpenSyllabus }) {
                   </div>
 
                   {/* Course Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
                     {course.title}
                   </h3>
+
+                  {/* Timeline Badge */}
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono font-medium">
+                      <Clock className="w-3.5 h-3.5 text-cyan-400" />
+                      <span>{course.durationDays} ({course.durationWeeks})</span>
+                    </span>
+                    <span className="text-xs text-gray-400 font-mono">
+                      {course.totalHours}
+                    </span>
+                  </div>
 
                   {/* Description */}
                   <p className="text-sm text-gray-400 font-light leading-relaxed mb-6">
@@ -157,16 +217,32 @@ export default function Training({ onOpenSyllabus }) {
                 </div>
 
                 {/* Footer block */}
-                <div className="flex items-center justify-between pt-6 border-t border-white/5 mt-auto">
-                  <span className="text-xs uppercase tracking-wider text-gray-400">
-                    {course.levelText}
-                  </span>
-                  <button 
-                    onClick={() => onOpenSyllabus(course.id)}
-                    className="px-5 py-2 rounded-full border border-white/10 hover:border-hyper-drive-blue hover:text-hyper-drive-blue transition-all duration-300 text-xs font-medium uppercase tracking-wider bg-transparent"
-                  >
-                    Syllabus
-                  </button>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-6 border-t border-white/5 mt-auto">
+                  <div className="flex flex-col">
+                    <span className="text-xs uppercase tracking-wider text-gray-300 font-semibold">
+                      {course.levelText}
+                    </span>
+                    <span className="text-[11px] text-cosmic-gold/80 font-light mt-0.5">
+                      {course.schedule}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 self-start sm:self-auto">
+                    {courseAtlasMap[course.id] && (
+                      <button
+                        onClick={() => onOpenAtlas ? onOpenAtlas(course.id) : onOpenSyllabus(course.id)}
+                        className="px-3.5 py-2 rounded-full border border-cosmic-gold/40 text-cosmic-gold hover:bg-cosmic-gold/10 hover:border-cosmic-gold transition-all duration-300 text-xs font-semibold uppercase tracking-wider bg-transparent cursor-pointer"
+                        title={`Open ${course.tag} Interactive Atlas`}
+                      >
+                        Atlas
+                      </button>
+                    )}
+                    <button 
+                      onClick={() => onOpenSyllabus(course.id)}
+                      className="px-5 py-2 rounded-full border border-white/10 hover:border-hyper-drive-blue hover:text-hyper-drive-blue transition-all duration-300 text-xs font-medium uppercase tracking-wider bg-transparent cursor-pointer"
+                    >
+                      Syllabus &amp; Timeline
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             );

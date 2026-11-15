@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Sparkles, Clock, Calendar, CheckCircle2, Compass, ExternalLink } from 'lucide-react';
 
 const syllabusData = {
   dp700: {
@@ -11,6 +11,19 @@ const syllabusData = {
     credential: "Fabric Data Engineer Associate",
     level: "Elite Master",
     cost: "$165 USD",
+    durationDays: "35 Days",
+    durationWeeks: "7 Weeks",
+    totalHours: "70 Total Hours (35h Live + 35h Lab)",
+    schedule: "Mon–Fri (2 hrs/day: 1h Lecture + 1h Lab) or Weekend Intensive",
+    timeline: [
+      { week: "Week 1", days: "Days 1–5", title: "Tenant, Workspace & OneLake Foundations", desc: "Enterprise Fabric tenant setup, capacity metrics, OneLake shortcuts (ADLS/S3/GCS), and security governance (RLS/CLS).", lab: "LAB 01" },
+      { week: "Week 2", days: "Days 6–10", title: "Lakehouse Architecture & Medallion Strategy", desc: "Delta Parquet internals, ACID logs, and Bronze ➔ Silver ➔ Gold conformed medallion pipeline design.", lab: "LAB 02" },
+      { week: "Week 3", days: "Days 11–15", title: "High-Scale Ingestion & Database Mirroring", desc: "Data Factory copy pipelines, Dataflows Gen2 with Power Query Online, and continuous zero-ETL database mirroring.", lab: "LAB 03 & 04" },
+      { week: "Week 4", days: "Days 16–20", title: "Advanced PySpark Notebook Engineering", desc: "Distributed Spark compute pools, DataFrame transformations, partition pruning, and broadcast joins at scale.", lab: "LAB 05" },
+      { week: "Week 5", days: "Days 21–25", title: "Delta Lake Performance & Time Travel", desc: "OPTIMIZE, Z-ORDER, VACUUM maintenance, versionAsOf time travel restoration, and write conflict mitigation.", lab: "LAB 06" },
+      { week: "Week 6", days: "Days 26–30", title: "Synapse Warehouse & Real-Time Intelligence", desc: "T-SQL warehouse queries, cross-database endpoints, Eventstreams ingestion, Eventhouses, and KQL streaming.", lab: "LAB 07" },
+      { week: "Week 7", days: "Days 31–35", title: "CI/CD Git DevOps, Purview & Exam Marathon", desc: "Azure DevOps release pipelines, Purview data catalog/lineage, capacity optimization, and 150-question mock exam.", lab: "LAB 08" }
+    ],
     weights: [
       { topic: "Implement & Manage Analytics Solution", weight: "30–35%" },
       { topic: "Ingest & Transform Data", weight: "30–35%" },
@@ -94,6 +107,18 @@ const syllabusData = {
     credential: "Fabric Analytics Engineer Associate",
     level: "Specialist",
     cost: "$165 USD",
+    durationDays: "30 Days",
+    durationWeeks: "6 Weeks",
+    totalHours: "60 Total Hours (30h Live + 30h Lab)",
+    schedule: "Mon–Fri (2 hrs/day: 1h Lecture + 1h Lab) or Weekend Intensive",
+    timeline: [
+      { week: "Week 1", days: "Days 1–5", title: "Analytics Environment & OneLake Provisioning", desc: "Capacity governance, workspace security roles, OneLake file layout, and lakehouse storage.", lab: "LAB 01" },
+      { week: "Week 2", days: "Days 6–10", title: "Data Preparation with Dataflows Gen2", desc: "Power Query M cleansing, error handling, staging mechanics, and incremental refresh dimension loading.", lab: "LAB 02" },
+      { week: "Week 3", days: "Days 11–15", title: "Data Serving via SQL Endpoints & Notebooks", desc: "T-SQL analytics on lakehouses, view materialization, and low-code PySpark preparation.", lab: "LAB 03" },
+      { week: "Week 4", days: "Days 16–20", title: "Enterprise Semantic Modeling & Advanced DAX", desc: "Star schema design, calculation groups, semi-additive measures, and advanced DAX time intelligence.", lab: "LAB 04" },
+      { week: "Week 5", days: "Days 21–25", title: "Power BI Direct Lake Mode & Performance Tuning", desc: "Direct Lake zero-copy memory mapping, fallback diagnostics, and DAX Studio query tracing.", lab: "LAB 05" },
+      { week: "Week 6", days: "Days 26–30", title: "Deployment Pipelines, Purview & DP-600 Exam Drills", desc: "Git-backed PBIP release pipelines, Purview data cataloging, and comprehensive DP-600 practice test.", lab: "LAB 06" }
+    ],
     weights: [
       { topic: "Plan & Implement Analytics Env", weight: "10–15%" },
       { topic: "Prepare & Serve Data", weight: "40–45%" },
@@ -178,6 +203,18 @@ const syllabusData = {
     credential: "Microsoft Certified: Fabric Data Engineer Associate",
     level: "Specialist",
     cost: "$165 USD",
+    durationDays: "30 Days",
+    durationWeeks: "6 Weeks",
+    totalHours: "60 Total Hours (30h Live + 30h Lab)",
+    schedule: "Mon–Fri (2 hrs/day: 1h Lecture + 1h Lab) or Weekend Intensive",
+    timeline: [
+      { week: "Week 1", days: "Days 1–5", title: "Databricks Workspaces & Unity Catalog", desc: "Metastore setup, 3-level namespace (catalog.schema.table), and external volume credentials.", lab: "LAB 01" },
+      { week: "Week 2", days: "Days 6–10", title: "Delta Lake Internals & Medallion Design", desc: "_delta_log transaction logs, ACID compliance, and Bronze-to-Gold medallion streaming architecture.", lab: "LAB 02" },
+      { week: "Week 3", days: "Days 11–15", title: "Delta Live Tables (DLT) & Streaming Pipelines", desc: "Declarative Python/SQL DLT pipelines, data quality expectations, and Auto Loader stream ingestion.", lab: "LAB 03" },
+      { week: "Week 4", days: "Days 16–20", title: "PySpark Optimization & Liquid Clustering", desc: "Cluster sizing, shuffle partition tuning, data skew mitigation, Photon engine, and Liquid Clustering.", lab: "LAB 04" },
+      { week: "Week 5", days: "Days 21–25", title: "Fine-Grained Security & Purview Lineage", desc: "Dynamic row filtering, column masking, audit logs, and cross-platform Purview catalog integration.", lab: "LAB 05" },
+      { week: "Week 6", days: "Days 26–30", title: "CI/CD Asset Bundles (DABs) & Mock Exam", desc: "Databricks Asset Bundles for automated deployment, production job alerting, and DP-750 exam marathon.", lab: "LAB 06" }
+    ],
     weights: [
       { topic: "Design & Implement a Lakehouse", weight: "30–35%" },
       { topic: "Ingest & Transform Data", weight: "25–30%" },
@@ -252,6 +289,17 @@ const syllabusData = {
     credential: "Microsoft Certified: Fabric Data Scientist Associate",
     level: "Specialist",
     cost: "$165 USD",
+    durationDays: "25 Days",
+    durationWeeks: "5 Weeks",
+    totalHours: "50 Total Hours (25h Live + 25h Lab)",
+    schedule: "Mon–Fri (2 hrs/day: 1h Lecture + 1h Lab) or Weekend Intensive",
+    timeline: [
+      { week: "Week 1", days: "Days 1–5", title: "Fabric Warehouse Architecture & Provisioning", desc: "Decoupled compute and storage internals, creating warehouses, and cross-database queries.", lab: "LAB 01" },
+      { week: "Week 2", days: "Days 6–10", title: "Dimensional Modeling & SCD Implementation", desc: "Star schema dimensional design, SCD Type 1 & Type 2 merge patterns using T-SQL.", lab: "LAB 02" },
+      { week: "Week 3", days: "Days 11–15", title: "High-Performance T-SQL & Stored Procedures", desc: "Stored procedure automation, transactions, dynamic SQL, and OneLake Delta table compaction.", lab: "LAB 03" },
+      { week: "Week 4", days: "Days 16–20", title: "Legacy Migration to Fabric Warehouse", desc: "Migrating Azure Synapse Dedicated SQL Pools and on-prem SQL Server to Fabric Data Warehouse.", lab: "LAB 04" },
+      { week: "Week 5", days: "Days 21–25", title: "Performance Insights, Security & Exam Drills", desc: "DMV query insights, Object/Row/Column-level security, and DP-800 certification mock test.", lab: "LAB 05" }
+    ],
     weights: [
       { topic: "Design & Prepare Data for ML", weight: "25–30%" },
       { topic: "Build & Train ML Models", weight: "30–35%" },
@@ -317,15 +365,103 @@ const syllabusData = {
       }
     ]
   },
+  ai103: {
+    trustPill: "AI-103 MASTER CURRICULUM",
+    title: "Azure AI Foundry & Generative AI Solutions",
+    status: "active",
+    statusText: "Active",
+    exam: "Exam AI-103",
+    credential: "Azure AI Engineer Associate",
+    level: "Specialist",
+    cost: "$165 USD",
+    durationDays: "25 Days",
+    durationWeeks: "5 Weeks",
+    totalHours: "50 Total Hours (25h Live + 25h Lab)",
+    schedule: "Mon–Fri (2 hrs/day: 1h Lecture + 1h Lab) or Weekend Intensive",
+    timeline: [
+      { week: "Week 1", days: "Days 1–5", title: "Azure AI Foundry Ecosystem & Foundation Models", desc: "Hubs, projects, role-based access, and model catalog deployments (GPT-4o, Llama 3, Phi-3).", lab: "LAB 01" },
+      { week: "Week 2", days: "Days 6–10", title: "Prompt Engineering & System Safeguards", desc: "Few-shot prompting, structured JSON outputs, Azure Content Safety shields, and jailbreak detection.", lab: "LAB 02" },
+      { week: "Week 3", days: "Days 11–15", title: "Enterprise RAG Architecture with AI Search", desc: "Vector embeddings, chunking, hybrid search (BM25 + Vector), and semantic re-ranking.", lab: "LAB 03" },
+      { week: "Week 4", days: "Days 16–20", title: "Multi-Agent Systems & Semantic Kernel", desc: "Microsoft AutoGen and Semantic Kernel multi-agent collaboration, tool-use, and persistent memory.", lab: "LAB 04" },
+      { week: "Week 5", days: "Days 21–25", title: "Model Evaluation, Tracing & AI-103 Exam Drills", desc: "Automated evaluations (groundedness, relevance), OpenTelemetry tracing, and full mock exam.", lab: "LAB 05" }
+    ],
+    weights: [
+      { topic: "Plan & Manage Azure AI Solutions", weight: "15–20%" },
+      { topic: "Implement Generative AI & Prompting", weight: "25–30%" },
+      { topic: "Build Enterprise RAG Applications", weight: "30–35%" },
+      { topic: "Evaluate, Secure & Monitor AI Solutions", weight: "20–25%" }
+    ],
+    description: [
+      "Led by Master Consultant and Microsoft Certified Trainer (MCT) <strong>Navakanth Reddy Dumpa</strong>, this curriculum equips AI and software engineers to architect, deploy, and evaluate production-grade generative AI applications.",
+      "Master enterprise Retrieval-Augmented Generation (RAG) using Azure AI Search, multi-agent workflows with AutoGen / Semantic Kernel, and robust content safety mechanisms."
+    ],
+    tracks: [
+      {
+        title: "🤖 Track 1: Foundation Models & AI Foundry",
+        desc: "Deploy, test, and manage frontier LLMs and SLMs across Azure AI Studio and AI Foundry hubs."
+      },
+      {
+        title: "🛡️ Track 2: Advanced Prompting & Safety Shields",
+        desc: "Design system prompts, few-shot templates, and enforce Azure Content Safety and Prompt Shields."
+      },
+      {
+        title: "📚 Track 3: Enterprise RAG Architecture",
+        desc: "Vector chunking, indexing in Azure AI Search, hybrid vector/keyword queries, and semantic reranking."
+      },
+      {
+        title: "👥 Track 4: Multi-Agent Systems & Tools",
+        desc: "Build collaborative agent swarms, function calling, tool routing, and external API connectors."
+      },
+      {
+        title: "📊 Track 5: LLM Evaluation & Production Monitoring",
+        desc: "Run automated LLM-as-a-judge evaluations, configure OpenTelemetry traces, and ensure governance compliance."
+      }
+    ],
+    labs: [
+      {
+        num: "LAB 01",
+        title: "Deploy Foundation Models via AI Foundry",
+        desc: "Configure an AI Studio project, deploy GPT-4o and Phi-3 endpoints, and test inference parameters."
+      },
+      {
+        num: "LAB 02",
+        title: "Prompt Engineering & Safety Filters",
+        desc: "Implement structured JSON output prompts and attach Azure Content Safety moderation filters."
+      },
+      {
+        num: "LAB 03",
+        title: "Production RAG with Azure AI Search",
+        desc: "Index complex enterprise PDF documents with vector embeddings and build hybrid search retrieval."
+      },
+      {
+        num: "LAB 04",
+        title: "Multi-Agent Workflow with Semantic Kernel",
+        desc: "Build a collaborative agent team where specialist agents draft, critique, and finalize analytical reports."
+      },
+      {
+        num: "LAB 05",
+        title: "Continuous Evaluation & Telemetry",
+        desc: "Set up groundedness and relevance evaluations and trace inference latency in Azure Monitor."
+      }
+    ]
+  },
   dp900: {
     trustPill: "DP-900 CURRICULUM",
-    title: "Azure Data Fundamentals (Coming Soon)",
-    status: "coming",
-    statusText: "Coming Soon",
+    title: "Azure Data Fundamentals",
+    status: "active",
+    statusText: "Active",
     exam: "Exam DP-900",
     credential: "Microsoft Certified: Azure Data Fundamentals",
     level: "Foundation",
     cost: "$99 USD",
+    durationDays: "10 Days",
+    durationWeeks: "2 Weeks",
+    totalHours: "20 Total Hours (10h Live + 10h Lab)",
+    schedule: "Mon–Fri (2 hrs/day) Fast-Track",
+    timeline: [
+      { week: "Week 1", days: "Days 1–5", title: "Core Data Concepts & Azure Relational Databases", desc: "Relational vs non-relational storage, ACID principles, Azure SQL Database and PostgreSQL.", lab: "LAB 01" },
+      { week: "Week 2", days: "Days 6–10", title: "NoSQL, Cloud Storage & Analytics Workloads", desc: "Azure Blob, ADLS Gen2, Cosmos DB multi-model APIs, Synapse Analytics, and DP-900 practice test.", lab: "LAB 02 & 03" }
+    ],
     weights: [
       { topic: "Describe Core Data Concepts", weight: "25–30%" },
       { topic: "Identify Relational Data on Azure", weight: "20–25%" },
@@ -381,6 +517,15 @@ const syllabusData = {
     credential: "Microsoft Certified: Azure Data Engineer Associate",
     level: "Legacy Core",
     cost: "$165 USD",
+    durationDays: "40 Days",
+    durationWeeks: "Self-Paced",
+    totalHours: "80 Total Hours (Curated Archive)",
+    schedule: "On-Demand Historical Reference",
+    timeline: [
+      { week: "Phase 1", days: "Days 1–15", title: "Data Storage & Dedicated SQL Pools", desc: "Synapse Dedicated SQL Pools, ADLS Gen2 partition schemes, and security configurations.", lab: "LAB 01" },
+      { week: "Phase 2", days: "Days 16–30", title: "PySpark Transformations on Databricks", desc: "Spark notebooks, DBFS storage, and cluster performance tuning.", lab: "LAB 02" },
+      { week: "Phase 3", days: "Days 31–40", title: "ADF Ingestion & Synapse Migration Pathways", desc: "Parameterized ADF pipelines, self-hosted integration runtimes, and migration patterns to Fabric.", lab: "LAB 03" }
+    ],
     weights: [
       { topic: "Design & Implement Data Storage", weight: "40–45%" },
       { topic: "Develop Data Processing", weight: "25–30%" },
@@ -424,13 +569,30 @@ const syllabusData = {
   }
 };
 
+const courseAtlasMap = {
+  dp700: '/dp700-atlas/index.html',
+  dp600: '/dp600-atlas/index.html',
+  dp750: '/dp750-atlas/index.html',
+  dp800: '/dp800-atlas/index.html',
+  ai103: '/ai103-atlas/index.html'
+};
+
 export default function SyllabusModal({ isOpen, courseId, onClose, onBeginAscent }) {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('tracks');
+
+  useEffect(() => {
+    if (isOpen) {
+      setActiveTab('tracks');
+    }
+  }, [isOpen, courseId]);
 
   if (!isOpen) return null;
 
   const data = syllabusData[courseId];
   if (!data) return null;
+
+  const normalized = (courseId || '').toLowerCase().replace('-', '');
+  const atlasUrl = courseAtlasMap[normalized];
 
   const getStatusColorClass = (status) => {
     switch (status) {
@@ -457,9 +619,21 @@ export default function SyllabusModal({ isOpen, courseId, onClose, onBeginAscent
 
         {/* Modal Header */}
         <div className="mb-6 space-y-2">
-          <span className="text-[11px] font-bold tracking-widest text-cosmic-gold uppercase block">
-            {data.trustPill}
-          </span>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <span className="text-[11px] font-bold tracking-widest text-cosmic-gold uppercase block">
+              {data.trustPill}
+            </span>
+            {atlasUrl && (
+              <button
+                onClick={() => onBeginAscent(courseId)}
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-hyper-drive-blue/10 hover:bg-hyper-drive-blue/20 text-hyper-drive-blue border border-hyper-drive-blue/30 text-xs font-semibold transition-all hover:scale-105 cursor-pointer mr-6"
+                title="Launch Full Interactive Atlas"
+              >
+                <Compass className="h-3.5 w-3.5" />
+                <span>Open Full Interactive Atlas</span>
+              </button>
+            )}
+          </div>
           <div className="flex flex-wrap items-center gap-3">
             <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
               {data.title}
@@ -471,38 +645,46 @@ export default function SyllabusModal({ isOpen, courseId, onClose, onBeginAscent
         </div>
 
         {/* Quick Info Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 mb-6 rounded-2xl bg-hyper-drive-blue/5 border border-hyper-drive-blue/15 text-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 p-4 mb-6 rounded-2xl bg-hyper-drive-blue/5 border border-hyper-drive-blue/15 text-sm">
           <div>
             <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mb-0.5">Exam</span>
-            <span className="text-white font-semibold">{data.exam}</span>
+            <span className="text-white font-semibold text-xs md:text-sm">{data.exam}</span>
           </div>
           <div>
             <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mb-0.5">Credential</span>
-            <span className="text-white font-semibold">{data.credential}</span>
+            <span className="text-white font-semibold text-xs truncate block" title={data.credential}>{data.credential}</span>
+          </div>
+          <div>
+            <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mb-0.5">Duration</span>
+            <span className="text-cyan-400 font-semibold text-xs md:text-sm">{data.durationDays || '30 Days'}</span>
+          </div>
+          <div>
+            <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mb-0.5">Total Hours</span>
+            <span className="text-cosmic-gold font-semibold text-xs md:text-sm">{data.totalHours?.split(' ')[0]} {data.totalHours?.split(' ')[1] || 'Hrs'}</span>
           </div>
           <div>
             <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mb-0.5">Level</span>
-            <span className="text-white font-semibold">{data.level}</span>
+            <span className="text-white font-semibold text-xs md:text-sm">{data.level}</span>
           </div>
           <div>
             <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mb-0.5">Cost</span>
-            <span className="text-white font-semibold">{data.cost}</span>
+            <span className="text-white font-semibold text-xs md:text-sm">{data.cost}</span>
           </div>
         </div>
 
         {/* Tab Selection */}
-        <div className="flex border-b border-white/5 pb-2 gap-6 mb-6">
-          {['overview', 'tracks', 'labs'].map((tab) => (
+        <div className="flex border-b border-white/5 pb-2 gap-4 md:gap-6 mb-6 overflow-x-auto scrollbar-none">
+          {['tracks', 'timeline', 'labs', 'overview'].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`text-sm font-semibold uppercase tracking-wider pb-2 relative transition-all cursor-pointer ${
+              className={`text-xs md:text-sm font-semibold uppercase tracking-wider pb-2 relative transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === tab 
-                  ? 'text-cosmic-gold font-bold border-b border-cosmic-gold' 
+                  ? 'text-cosmic-gold font-bold border-b-2 border-cosmic-gold' 
                   : 'text-gray-400 hover:text-gray-200'
               }`}
             >
-              {tab}
+              {tab === 'timeline' ? `📅 Timeline (${data.durationDays || 'Roadmap'})` : tab === 'tracks' ? 'Tracks (Syllabus)' : tab}
             </button>
           ))}
         </div>
@@ -535,6 +717,50 @@ export default function SyllabusModal({ isOpen, courseId, onClose, onBeginAscent
                     <p key={idx} dangerouslySetInnerHTML={{ __html: p }} />
                   ))}
                 </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'timeline' && (
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-white/10">
+                <div>
+                  <h4 className="text-sm font-bold text-cosmic-gold uppercase tracking-wider">
+                    Syllabus Timeline &amp; Day-by-Day Progression
+                  </h4>
+                  <p className="text-xs text-gray-400 font-light mt-0.5">
+                    {data.durationDays} · {data.durationWeeks} · {data.totalHours}
+                  </p>
+                </div>
+                {data.schedule && (
+                  <div className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono self-start sm:self-auto">
+                    {data.schedule}
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-3 mt-4">
+                {data.timeline?.map((step, idx) => (
+                  <div key={idx} className="glass-panel p-4 bg-black/30 border-white/5 hover:border-cyan-500/30 transition-all rounded-xl">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-mono font-bold text-[11px] border border-cyan-500/20">
+                          {step.week}
+                        </span>
+                        <span className="text-xs font-mono text-cosmic-gold font-semibold">
+                          {step.days}
+                        </span>
+                      </div>
+                      {step.lab && (
+                        <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-mono text-[10px] border border-amber-500/20">
+                          {step.lab}
+                        </span>
+                      )}
+                    </div>
+                    <h5 className="text-sm font-bold text-white mb-1">{step.title}</h5>
+                    <p className="text-xs text-gray-400 leading-relaxed font-light">{step.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -575,8 +801,8 @@ export default function SyllabusModal({ isOpen, courseId, onClose, onBeginAscent
           )}
         </div>
 
-        {/* Begin Ascent Trigger */}
-        <div className="mt-8 text-center">
+        {/* Begin Ascent Trigger & Atlas Link */}
+        <div className="mt-8 text-center flex flex-col sm:flex-row items-center justify-center gap-3">
           <button 
             onClick={() => onBeginAscent(courseId)}
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full text-black font-bold uppercase tracking-wider bg-gradient-to-r from-hyper-drive-blue to-cosmic-gold shadow-lg hover:shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-sm"
@@ -584,6 +810,19 @@ export default function SyllabusModal({ isOpen, courseId, onClose, onBeginAscent
             <Sparkles className="h-4 w-4 fill-black" />
             <span>Begin Your Ascent</span>
           </button>
+          {atlasUrl && (
+            <a
+              href={atlasUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-slate-300 hover:text-white font-semibold text-xs uppercase tracking-wider bg-white/5 hover:bg-white/10 border border-white/10 hover:border-hyper-drive-blue transition-all duration-300 cursor-pointer"
+              title="Open Atlas in New Tab"
+            >
+              <Compass className="h-4 w-4 text-hyper-drive-blue" />
+              <span>Open Atlas in New Tab</span>
+              <ExternalLink className="h-3 w-3 text-gray-400" />
+            </a>
+          )}
         </div>
 
       </div>
