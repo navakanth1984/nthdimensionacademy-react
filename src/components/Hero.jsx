@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-export default function Hero({ content }) {
+export default function Hero({ content, onOpenMatcher }) {
   const headline = content?.title || "Get Set Certified";
   const subtitle = content?.subtitle || "Microsoft Fabric & Azure mastery, led by MCT Navakanth Reddy Dumpa.\nStep through the data multiverse.";
 
@@ -94,7 +94,7 @@ export default function Hero({ content }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="flex flex-col sm:flex-row gap-5 justify-center items-center w-full sm:w-auto"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto"
         >
           <a 
             href="#training" 
@@ -103,6 +103,14 @@ export default function Hero({ content }) {
             <span>Begin the Ascent</span>
             <ArrowRight className="h-5 w-5" />
           </a>
+          {onOpenMatcher && (
+            <button
+              onClick={onOpenMatcher}
+              className="flex items-center gap-2 px-7 py-4 rounded-full text-[#ffd700] font-bold uppercase tracking-wider bg-[#ffd700]/10 border border-[#ffd700]/40 shadow-[0_0_20px_rgba(255,215,0,0.2)] hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] hover:bg-[#ffd700]/20 hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center justify-center cursor-pointer"
+            >
+              <span>2-Min Exam Matcher</span>
+            </button>
+          )}
           <a 
             href="#knowledge-graph" 
             className="px-8 py-4 rounded-full text-white font-semibold uppercase tracking-wider bg-slate-900/60 backdrop-blur-md border border-white/10 hover:bg-slate-800/80 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-center"

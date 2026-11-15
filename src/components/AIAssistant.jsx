@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Send, Mic, X, Minus, Sparkles } from 'lucide-react';
 
-export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTriggerQuery }) {
+export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTriggerQuery, onOpenMatcher }) {
   const [inputText, setInputText] = useState('');
   const [isThinking, setIsThinking] = useState(false);
   const [messages, setMessages] = useState([
@@ -94,7 +94,7 @@ export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTrigge
       setMessages(prev => [...prev, {
         id: Date.now() + '-err',
         sender: 'system',
-        text: 'Apologies, Voyager. The dimensional link is unstable. Please try again later.'
+        text: 'The AI channel is syncing. In the meantime, launch our interactive 2-Minute Certification Matcher or chat directly with MCT Navakanth Reddy on WhatsApp (+91-6304980314)!'
       }]);
     }
   };
@@ -232,6 +232,38 @@ export default function AIAssistant({ isOpen, setIsOpen, triggerQuery, setTrigge
             )}
             
             <div ref={messagesEndRef} />
+          </div>
+
+          {/* Quick Action Suggested Action Pills */}
+          <div className="px-3 py-2 bg-[#060a14] border-t border-white/5 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+            <button
+              onClick={() => {
+                if (onOpenMatcher) {
+                  setIsOpen(false);
+                  onOpenMatcher();
+                }
+              }}
+              className="text-[11px] whitespace-nowrap px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 transition cursor-pointer flex items-center gap-1"
+            >
+              <span>🎯 2-Min Matcher</span>
+            </button>
+            <a
+              href="https://wa.me/916304980314?text=Hi%20Navakanth%20Sir%2C%20I%20have%20a%20question%20regarding%20Microsoft%20Fabric%20and%20Azure%20training%20at%20Nth%20Dimension%20Academy."
+              target="_blank"
+              rel="noopener"
+              className="text-[11px] whitespace-nowrap px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition cursor-pointer flex items-center gap-1"
+            >
+              <span>💬 WhatsApp MCT</span>
+            </a>
+            <button
+              onClick={() => {
+                setInputText('What is the difference between DP-600 and DP-700?');
+                callNIM('What is the difference between DP-600 and DP-700?');
+              }}
+              className="text-[11px] whitespace-nowrap px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 transition cursor-pointer"
+            >
+              ⚡ DP-600 vs DP-700
+            </button>
           </div>
 
           {/* Chat Input Area */}
