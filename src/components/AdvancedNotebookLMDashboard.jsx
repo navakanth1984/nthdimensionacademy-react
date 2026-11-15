@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const AdvancedNotebookLMDashboard = ({ onClose }) => {
   const [activeTopic, setActiveTopic] = useState('architecture');
@@ -6,6 +6,21 @@ const AdvancedNotebookLMDashboard = ({ onClose }) => {
   const [synthesisText, setSynthesisText] = useState('');
   const [sources, setSources] = useState(['knowledge_base.pdf', 'api_docs.md']);
   const [dragActive, setDragActive] = useState(false);
+  const synthesisIntervalRef = useRef(null);
+
+  // Esc key listener for modal dismissal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && onClose) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      if (synthesisIntervalRef.current) clearInterval(synthesisIntervalRef.current);
+    };
+  }, [onClose]);
 
   const topics = {
     architecture: {
@@ -55,16 +70,18 @@ const AdvancedNotebookLMDashboard = ({ onClose }) => {
 
   const runSynthesis = () => {
     if (isSynthesizing) return;
+    if (synthesisIntervalRef.current) clearInterval(synthesisIntervalRef.current);
     setIsSynthesizing(true);
     setSynthesisText('');
     const mockResponse = "Analyzing sources...\nExtracting core architectural nodes...\nCorrelating Cookie authentication with API Bridge endpoints...\n\n[Synthesis Complete]\nThe Direct API Bridge successfully bypassed Chrome UI automation, reducing latency by 94%.";
     
     let i = 0;
-    const interval = setInterval(() => {
+    synthesisIntervalRef.current = setInterval(() => {
       setSynthesisText(mockResponse.substring(0, i));
       i++;
       if (i > mockResponse.length) {
-        clearInterval(interval);
+        clearInterval(synthesisIntervalRef.current);
+        synthesisIntervalRef.current = null;
         setIsSynthesizing(false);
       }
     }, 20);

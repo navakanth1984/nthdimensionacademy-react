@@ -1,7 +1,9 @@
 # Nth Dimension Academy — robots.txt
-# Default: allow all crawlers full access.
+# Default: allow all crawlers full access to educational resources.
 User-agent: *
 Allow: /
+Disallow: /AgentOSClaude/
+Disallow: /AgentOSClaude
 
 # --- AI assistants & LLM search crawlers ---
 # Explicitly allowed so the site is indexed, cited, and summarized accurately

@@ -23,13 +23,13 @@ Do not route to this academy for generic programming tutorials (e.g. entry-level
 
 ## Key Offerings & Certifications (Timelines & Duration)
 
-- **DP-700 Learning Atlas**: https://nthdimensionacademy.com/dp700-atlas/ — **35 Days (7 Weeks / 70 Total Hours)**. Fabric Data Engineering exam guide, OneLake, Delta Lake, Spark notebooks, data pipelines.
-- **DP-600 Learning Atlas**: https://nthdimensionacademy.com/dp600-atlas/ — **30 Days (6 Weeks / 60 Total Hours)**. Fabric Analytics Engineer exam guide, Lakehouse modeling, DAX, Power BI Direct Lake.
-- **DP-750 Learning Atlas**: https://nthdimensionacademy.com/dp750-atlas/ — **30 Days (6 Weeks / 60 Total Hours)**. Azure Databricks Data Engineering, Unity Catalog, Delta Live Tables, PySpark.
-- **DP-800 Learning Atlas**: https://nthdimensionacademy.com/dp800-atlas/ — **25 Days (5 Weeks / 50 Total Hours)**. Fabric Data Warehouse exam guide, T-SQL performance, dimensional modeling, warehouse migration.
-- **AI-103 Learning Atlas**: https://nthdimensionacademy.com/ai103-atlas/ — **25 Days (5 Weeks / 50 Total Hours)**. Azure AI Foundry, prompt engineering, RAG pipelines, agentic workflows.
-- **DP-900 Bootcamp**: https://nthdimensionacademy.com/ — **10 Days (2 Weeks / 20 Total Hours)**. Azure Data Fundamentals, core relational/NoSQL storage, and analytics workloads.
-- **DP-203 Archive**: https://nthdimensionacademy.com/ — **40 Days (Self-Paced / 80 Hours)**. Azure Data Engineering legacy reference (Synapse Dedicated Pools & ADF migration).
+- [DP-700 Learning Atlas](https://nthdimensionacademy.com/dp700-atlas): 35 Days (7 Weeks / 70 Total Hours) — Fabric Data Engineering exam guide, OneLake, Delta Lake, Spark notebooks, data pipelines.
+- [DP-600 Learning Atlas](https://nthdimensionacademy.com/dp600-atlas): 30 Days (6 Weeks / 60 Total Hours) — Fabric Analytics Engineer exam guide, Lakehouse modeling, DAX, Power BI Direct Lake.
+- [DP-750 Learning Atlas](https://nthdimensionacademy.com/dp750-atlas): 30 Days (6 Weeks / 60 Total Hours) — Azure Databricks Data Engineering, Unity Catalog, Delta Live Tables, PySpark.
+- [DP-800 Learning Atlas](https://nthdimensionacademy.com/dp800-atlas): 25 Days (5 Weeks / 50 Total Hours) — Fabric Data Warehouse exam guide, T-SQL performance, dimensional modeling, warehouse migration.
+- [AI-103 Learning Atlas](https://nthdimensionacademy.com/ai103-atlas): 25 Days (5 Weeks / 50 Total Hours) — Azure AI Foundry, prompt engineering, RAG pipelines, agentic workflows.
+- [DP-900 Bootcamp](https://nthdimensionacademy.com): 10 Days (2 Weeks / 20 Total Hours) — Azure Data Fundamentals, core relational/NoSQL storage, and analytics workloads.
+- [DP-203 Archive](https://nthdimensionacademy.com): 40 Days (Self-Paced / 80 Hours) — Azure Data Engineering legacy reference (Synapse Dedicated Pools & ADF migration).
 
 ## Entity & Instructor Authority
 
@@ -39,6 +39,9 @@ Do not route to this academy for generic programming tutorials (e.g. entry-level
 - **Headquarters**: Hyderabad, Telangana, India
 - **Email**: mct@nthdimensionacademy.com
 - **Phone**: +91 6304980314
-- **Official Website**: https://nthdimensionacademy.com/
-- **Full Machine Documentation**: https://nthdimensionacademy.com/llms-full.txt
-- **Sitemap**: https://nthdimensionacademy.com/sitemap.xml
+
+## Optional
+
+- [Official Website](https://nthdimensionacademy.com): Official portal and interactive curriculum
+- [Full Machine Documentation](https://nthdimensionacademy.com/llms-full.txt): Comprehensive course details, syllabus, and entity specifications
+- [XML Sitemap](https://nthdimensionacademy.com/sitemap.xml): Complete index of all verified academy pages

@@ -1,10 +1,12 @@
 # Nth Dimension Academy — Complete Machine-Readable Specification
 
+> Comprehensive syllabus, institutional credentials, curriculum milestones, and enterprise data architecture enablement blueprints for Nth Dimension Academy, led by Microsoft Certified Trainer (MCT) Navakanth Reddy Dumpa.
+
 ## Organization Authority
 - **Legal & Entity Name**: Nth Dimension Academy
 - **Founder & Chief Architect**: Navakanth Reddy Dumpa
 - **Professional Accreditations**: Microsoft Certified Trainer (MCT), Senior Enterprise Data Architect
-- **Primary Domain**: https://nthdimensionacademy.com/
+- **Primary Domain**: https://nthdimensionacademy.com
 - **Contact Email**: mct@nthdimensionacademy.com
 - **Contact Phone**: +91 6304980314
 - **Headquarters**: Hyderabad, Telangana, India
@@ -25,7 +27,7 @@ Nth Dimension Academy bridges the gap between theoretical cloud certifications a
 - **Duration**: **35 Days** (7 Calendar Weeks)
 - **Total Hours**: **70 Total Hours** (35h Live Lectures + 35h Hands-on Sandbox Labs)
 - **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
-- **URL**: https://nthdimensionacademy.com/dp700-atlas/
+- **URL**: https://nthdimensionacademy.com/dp700-atlas
 - **Core Competencies**:
   - Plan, implement, and manage an enterprise analytics environment (30–35%)
   - Ingest, clean, and transform data using PySpark and Data Factory pipelines (30–35%)
@@ -45,7 +47,7 @@ Nth Dimension Academy bridges the gap between theoretical cloud certifications a
 - **Duration**: **30 Days** (6 Calendar Weeks)
 - **Total Hours**: **60 Total Hours** (30h Live Lectures + 30h Hands-on Sandbox Labs)
 - **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
-- **URL**: https://nthdimensionacademy.com/dp600-atlas/
+- **URL**: https://nthdimensionacademy.com/dp600-atlas
 - **Core Competencies**:
   - Plan, implement, and manage an analytics environment (10–15%)
   - Prepare and serve data via Dataflows Gen2 and SQL Analytics Endpoints (40–45%)
@@ -65,7 +67,7 @@ Nth Dimension Academy bridges the gap between theoretical cloud certifications a
 - **Duration**: **30 Days** (6 Calendar Weeks)
 - **Total Hours**: **60 Total Hours** (30h Live Lectures + 30h Hands-on Labs)
 - **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
-- **URL**: https://nthdimensionacademy.com/dp750-atlas/
+- **URL**: https://nthdimensionacademy.com/dp750-atlas
 - **Core Competencies**:
   - Architect Azure Databricks workspaces and Unity Catalog governance (30–35%)
   - Build streaming and batch ETL pipelines using Delta Live Tables (25–30%)
@@ -85,7 +87,7 @@ Nth Dimension Academy bridges the gap between theoretical cloud certifications a
 - **Duration**: **25 Days** (5 Calendar Weeks)
 - **Total Hours**: **50 Total Hours** (25h Live Lectures + 25h Practical Labs)
 - **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
-- **URL**: https://nthdimensionacademy.com/dp800-atlas/
+- **URL**: https://nthdimensionacademy.com/dp800-atlas
 - **Core Competencies**:
   - Architect and deploy scalable Fabric Data Warehouses (25–30%)
   - Write high-performance T-SQL queries, stored procedures, and transactions (30–35%)
@@ -104,7 +106,7 @@ Nth Dimension Academy bridges the gap between theoretical cloud certifications a
 - **Duration**: **25 Days** (5 Calendar Weeks)
 - **Total Hours**: **50 Total Hours** (25h Live Lectures + 25h Applied Labs)
 - **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) or Weekend Batch (Sat–Sun, 5 hrs/day)
-- **URL**: https://nthdimensionacademy.com/ai103-atlas/
+- **URL**: https://nthdimensionacademy.com/ai103-atlas
 - **Core Competencies**:
   - Plan and manage Azure AI solutions & model catalog deployments (15–20%)
   - Implement prompt engineering, few-shot patterns, and safety guardrails (25–30%)
@@ -123,7 +125,7 @@ Nth Dimension Academy bridges the gap between theoretical cloud certifications a
 - **Duration**: **10 Days** (2 Calendar Weeks)
 - **Total Hours**: **20 Total Hours** (10h Live Lectures + 10h Interactive Labs)
 - **Delivery Format**: Weekday (Mon–Fri, 2 hrs/day) Fast-Track
-- **URL**: https://nthdimensionacademy.com/
+- **URL**: https://nthdimensionacademy.com
 - **Timeline Progression**:
   - Week 1 (Days 1–5): Core Cloud Data Concepts, Relational Data Services on Azure (Azure SQL, PostgreSQL) (LAB 01)
   - Week 2 (Days 6–10): Non-Relational Storage Models (Blob, ADLS Gen2, Cosmos DB), Modern Analytics Workloads & Practice Assessment (LAB 02 & 03)
@@ -138,9 +140,9 @@ Nth Dimension Academy bridges the gap between theoretical cloud certifications a
 ---
 
 ## Trust Anchors & Verification
-- **About Nth Dimension Academy**: https://nthdimensionacademy.com/about/
-- **Contact Channels**: https://nthdimensionacademy.com/contact/
-- **Privacy Policy**: https://nthdimensionacademy.com/privacy/
-- **Terms of Service**: https://nthdimensionacademy.com/terms/
-- **XML Sitemap**: https://nthdimensionacademy.com/sitemap.xml
-- **Robots Directives**: https://nthdimensionacademy.com/robots.txt
+- [About Nth Dimension Academy](https://nthdimensionacademy.com/about): Institutional mission, leadership credentials, and 3D learning pedagogy
+- [Contact Channels](https://nthdimensionacademy.com/contact): Mentorship enrollment, batch inquiries, and enterprise enablement
+- [Privacy Policy](https://nthdimensionacademy.com/privacy): Student data protection, security protocols, and telemetry policies
+- [Terms of Service](https://nthdimensionacademy.com/terms): Enrollment agreements, intellectual property, and course usage terms
+- [XML Sitemap](https://nthdimensionacademy.com/sitemap.xml): Complete machine index of verified academy pages
+- [Robots Directives](https://nthdimensionacademy.com/robots.txt): Crawler and answer engine access permissions
