@@ -394,8 +394,8 @@ function App() {
                 const href = e.target?.contentWindow?.location?.href;
                 // Guard: Do not close on initial uninitialized/blank state
                 if (!href || href === 'about:blank') return;
-                // If navigated away from atlas (e.g. Return to Portal clicked)
-                if (!href.includes('-atlas/')) {
+                // If navigated away from atlas entirely (e.g. Return to Portal clicked)
+                if (!href.includes('-atlas')) {
                   handleCloseAtlas();
                 }
               } catch (_) {
